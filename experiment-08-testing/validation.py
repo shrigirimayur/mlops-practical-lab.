@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def validate_frame(frame: pd.DataFrame, target: str) -> None:
     if frame.empty:
         raise ValueError("Dataset is empty")

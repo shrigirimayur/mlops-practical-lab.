@@ -1,9 +1,9 @@
-EXPERIMENT 10 — SAMPLE OUTPUT FORMAT (ILLUSTRATIVE)
-$ docker build -t mlops-practical:1.0 .
-[Docker build progress and final image tag]
+Experiment 10 — Docker environment check
 
-$ docker images
-REPOSITORY         TAG     IMAGE ID      SIZE
-mlops-practical    1.0     <image-id>    <size>
+Check:
+PowerShell Get-Command docker
 
-Run the commands with Docker Engine/Desktop running to obtain actual image ID, size and build output.
+Captured result:
+docker command not found
+
+Docker Engine/Desktop was unavailable in the execution environment. The Dockerfile and build/run instructions are included, but an image build, container startup, and container health check were not executed.

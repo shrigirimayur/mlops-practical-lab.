@@ -12,7 +12,7 @@ Compare software development, DevOps and MLOps; explain lifecycle, components, p
 1. Read the comparison in this README and identify the model/data artifacts that must be versioned.
 2. Draw the lifecycle from problem definition through monitoring and retraining.
 3. Map each stage to tools in the table below.
-4. Save your own diagram in `evidence/`.
+4. Review the Mermaid lifecycle diagram in [`mlops-lifecycle.mmd`](./mlops-lifecycle.mmd).
 
 
 ## Example commands and notes
@@ -26,14 +26,8 @@ Compare software development, DevOps and MLOps; explain lifecycle, components, p
 | Packaging/serving | Docker/Flask | Deployment |
 
 
-## Observation
-Write what you actually observed. Include tool versions, commands, important values, errors, and how you resolved them.
-
-## Result
-State only what you completed and verified. If a tool could not be configured, document the limitation rather than claiming success.
-
-## Output
-See the `OUTPUT.txt` file in this experiment folder for the sample/expected output format. Outputs that depend on running an external tool are labelled illustrative and should not be interpreted as proof of execution.
+## Observed result
+The lifecycle demonstration ran successfully. The captured terminal output is in [`OUTPUT.txt`](./OUTPUT.txt); the lifecycle diagram is a conceptual workflow reference.
 
 ## Viva questions
 1. What problem does this tool or workflow solve?

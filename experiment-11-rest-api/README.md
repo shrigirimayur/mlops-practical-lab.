@@ -9,7 +9,7 @@ Expose a trained demonstration model through a Flask REST API and test valid/inv
 - Work from the repository root unless stated otherwise
 
 ## Procedure
-1. Start the app with `python app.py`.
+1. From the repository root, start the app with `python experiment-11-rest-api/app.py`.
 2. Test `/health`.
 3. Send a JSON POST request to `/predict`.
 4. Test malformed input and incorrect feature counts.
@@ -18,21 +18,15 @@ Expose a trained demonstration model through a Flask REST API and test valid/inv
 
 ## Example commands and notes
 ```bash
-python app.py
+python experiment-11-rest-api/app.py
 curl http://127.0.0.1:8000/health
 ```
 
 Use Postman or cURL for `/predict`. The included example uses the Iris dataset and expects four numeric features.
 
 
-## Observation
-Write what you actually observed. Include tool versions, commands, important values, errors, and how you resolved them.
-
-## Result
-State only what you completed and verified. If a tool could not be configured, document the limitation rather than claiming success.
-
-## Output
-See the `OUTPUT.txt` file in this experiment folder for the sample/expected output format. Outputs that depend on running an external tool are labelled illustrative and should not be interpreted as proof of execution.
+## Observed result
+The Flask test client returned HTTP 200 for health and a valid Iris prediction, and HTTP 400 for an invalid feature count. The recorded responses and in-process latency are in [`OUTPUT.txt`](./OUTPUT.txt); the latency is not a network benchmark.
 
 ## Viva questions
 1. What problem does this tool or workflow solve?
@@ -45,3 +39,8 @@ The API validates request fields and returns a prediction response; a health end
 
 ## Outcome summary
 A Flask app and request examples are included. Response values and latency are generated at runtime.
+
+## Related files
+- [`app.py`](./app.py) contains the Flask application and trained Iris classifier.
+- [`requests.md`](./requests.md) contains example health, prediction, and invalid-input requests.
+- [Experiment 10](../experiment-10-docker/README.md) packages this API in Docker.

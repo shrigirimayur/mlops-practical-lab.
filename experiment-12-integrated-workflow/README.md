@@ -4,33 +4,20 @@
 Combine source control, data tracking, pipeline execution, experiment tracking, tests, CI, containerization and serving.
 
 ## Requirements
-- Python 3.10+ for Python examples
-- Relevant tool listed in the procedure
-- Work from the repository root unless stated otherwise
+- Python 3.10 or later
+- Git and dependencies installed from the repository-root `requirements.txt`
+- Optional external tools as noted in the relevant experiments
 
 ## Procedure
-1. Review the individual experiment instructions and identify which optional services are available.
-2. Commit the source and experiment documentation to Git; do not commit credentials or local-only artifacts.
-3. Generate and track the sample dataset with DVC, configure a remote, and verify the status and transfer operations.
-4. Run the data-processing example and the shared test suite; record their actual outputs.
-5. Run the MLflow training script and confirm the run, metrics, and artifact in the configured tracking UI.
-6. Push the repository and verify the GitHub Actions run.
-7. Build and start the Docker container, then test the API health and prediction endpoints.
-8. Complete [`checklist.md`](./checklist.md) based on evidence from your own runs; document unavailable tools and incomplete steps.
+1. Follow Experiments 2–11 to connect version control, data, features, training, testing, CI, packaging, and serving.
+2. Compare the recorded metrics and command results; identify which components use local demonstration infrastructure.
+3. Distinguish completed local integrations from unavailable infrastructure, such as a Docker daemon.
+4. Review the actual end-to-end summary in [`OUTPUT.txt`](./OUTPUT.txt).
 
 
-## Example commands and notes
-Run each command in its experiment guide and from the working directory stated there. The checklist starts unchecked intentionally. Mark an item complete only after verifying the corresponding artifact or external service result.
+## Integrated result
 
-
-## Observation
-Write what you actually observed. Include tool versions, commands, important values, errors, and how you resolved them.
-
-## Result
-State only what you completed and verified. If a tool could not be configured, document the limitation rather than claiming success.
-
-## Output
-See the `OUTPUT.txt` file in this experiment folder for the sample/expected output format. Outputs that depend on running an external tool are labelled illustrative and should not be interpreted as proof of execution.
+The captured results show the successful local demonstrations and CI run, and explicitly identify infrastructure that was not available in the execution environment.
 
 ## Viva questions
 1. What problem does this tool or workflow solve?
@@ -42,8 +29,7 @@ See the `OUTPUT.txt` file in this experiment folder for the sample/expected outp
 The integrated workflow demonstrates how source, data, experiment, test, packaging, and serving stages can be connected while retaining traceability.
 
 ## Outcome summary
-An end-to-end checklist is included. It describes verification criteria; it does not claim that every external integration has been run.
+The local workflow links all twelve practicals. A Docker image was not built when Docker was unavailable; the report does not claim an unverified container deployment.
 
 ## Related files
-- [`checklist.md`](./checklist.md) records verification status.
-- [Consolidated practical report](../MLOps_Practical_Lab_Report.md) summarizes the twelve topics.
+- [Consolidated practical report](../reports/MLOps_Practical_Lab_Report.md) summarizes the twelve topics and the verified results.

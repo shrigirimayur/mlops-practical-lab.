@@ -1,12 +1,42 @@
-EXPERIMENT 12 — INTEGRATION SUMMARY TEMPLATE
-Source control: documented
-Data versioning: DVC procedure included
-Data pipeline: runnable demonstration included
-Feature store: SQLite concept demo included; Feast setup documented
-Experiment tracking: MLflow training script included
-Testing: pytest tests included
-CI: GitHub Actions workflow included
-Containerization: Dockerfile included
-Serving: Flask API included
+Experiment 12 — integrated workflow results
+============================================
 
-This is a package inventory, not a claim that all integrations have been executed end-to-end. Verify each external tool before reporting runtime success.
+Recorded local demonstrations
+------------------------------
+Experiment 2: Created and merged Git branches, resolved a merge conflict, and
+verified the final repository state in the isolated demonstration repository.
+
+Experiment 3: DVC tracked a five-row dataset, transferred it to a temporary
+local remote, removed the working copy, and restored it with pull. This was
+not a cloud or shared remote.
+
+Experiment 4: Processed 10 rows into 8 training rows and 2 test rows, using
+2 features.
+
+Experiment 5: Feast applied the local feature definitions, retrieved
+historical and online feature values from the local SQLite provider, and
+demonstrated a stream update. This was not a production feature service.
+
+Experiment 6: MLflow logged RandomForestRegressor run
+86196a77bfd44613acda9a39a20a6499.
+  MAE: 43.53563736129633
+  MSE: 2878.820810419161
+  R2:  0.45663677692410665
+
+Experiment 7: Grid Search and Random Search both selected model__C=0.1.
+  Cross-validation F1: 0.9845
+  Test accuracy:      0.9737
+  Test F1:            0.9793
+
+Experiment 8: Local test suite passed: 4 passed.
+Experiment 9: Local CI-equivalent test command passed: 4 passed. The actual
+GitHub Actions run for the pushed code revision will be added after verification.
+
+Experiment 10: Docker CLI/Engine was unavailable in the execution environment.
+No image build or container run is claimed.
+
+Experiment 11: Flask test client returned HTTP 200 for /health, HTTP 200 for a
+valid Iris prediction (class setosa), and HTTP 400 for an invalid feature
+count. The measured latency was in-process and is not a network benchmark.
+
+See each experiment's OUTPUT.txt for the specific command and captured details.

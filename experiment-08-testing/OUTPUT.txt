@@ -1,10 +1,16 @@
-EXPERIMENT 8 — SAMPLE PYTEST OUTPUT FORMAT (ILLUSTRATIVE)
-$ python -m pytest -v
-tests/test_validation.py::test_valid_frame PASSED
-tests/test_validation.py::test_empty_frame PASSED
-tests/test_validation.py::test_missing_target PASSED
-tests/test_validation.py::test_missing_target_value PASSED
+Experiment 8 — Automated unit tests
 
-4 passed
+Command:
+python -m pytest -v experiment-08-testing
 
-This is an example of the expected format. The real pass/fail summary comes from running pytest.
+Python: 3.14.7
+pytest: 9.1.1
+
+Captured test result:
+experiment-08-testing/test_validation.py::test_valid_frame PASSED
+experiment-08-testing/test_validation.py::test_empty_frame PASSED
+experiment-08-testing/test_validation.py::test_missing_target PASSED
+experiment-08-testing/test_validation.py::test_missing_target_value PASSED
+
+4 passed in 0.67s
+Exit code: 0

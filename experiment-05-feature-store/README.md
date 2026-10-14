@@ -1,54 +1,43 @@
-# Experiment 5 — Feature Store and Feast
+# Experiment 5 — Feature Store with Feast
 
 ## Aim
-Understand offline/online stores, define reusable features, register them, and retrieve feature values.
 
-## Requirements
-- Python 3.10+ for Python examples
-- Relevant tool listed in the procedure
-- Work from the repository root unless stated otherwise
+Define reusable ML features, retrieve historical features for training, materialize features into a local online store, and retrieve values for inference.
 
-## Procedure
-1. Run the included SQLite demonstration from the repository root: `python experiment-05-feature-store/feature_store_demo.py`.
-2. Review the feature-store concepts and distinguish this teaching example from a Feast deployment.
-3. Check the current Feast quickstart and install a compatible version.
-4. Initialize a feature repository.
-5. Define an entity, feature view, event timestamp, and data source.
-6. Apply definitions and test offline and online retrieval.
-7. Record the provider and actual command output.
+## Tools
 
+- Feast 0.67.0 with its local provider
+- Pandas and the sample Parquet data included with the Feast repository
+- Local SQLite registry and online store
 
-## Example commands and notes
-```bash
-python -m pip install feast
-feast --version
-feast init feature_repo
+## Run the practical
+
+Install the repository dependencies from the root, then run the local workflow from the Feast feature repository:
+
+```powershell
+Set-Location experiment-05-feature-store\feast_repo\feature_repo
+python test_workflow.py
 ```
 
-Feast commands/configuration depend on version and provider. The code in this folder is a local SQLite teaching example for the feature-store concept, not proof that Feast was configured.
+The script applies feature definitions, retrieves historical training features, materializes the local online store, retrieves online features, and demonstrates a stream update. It retains local SQLite state so the registry and online-store files can be inspected after the run.
 
+## Implementation
 
-## Observation
-Write what you actually observed. Include tool versions, commands, important values, errors, and how you resolved them.
+- [`feast_repo/feature_repo/feature_store.yaml`](./feast_repo/feature_repo/feature_store.yaml) configures Feast's local provider and SQLite online store.
+- [`feast_repo/feature_repo/feature_definitions.py`](./feast_repo/feature_repo/feature_definitions.py) defines entities, feature views, request-time transformations, feature services, and labels.
+- [`feast_repo/feature_repo/data/`](./feast_repo/feature_repo/data/) contains the small sample Parquet sources.
+- [`feature_store_demo.py`](./feature_store_demo.py) is a separate lightweight SQLite concept demonstration.
+
+## Captured output
+
+[`OUTPUT.txt`](./OUTPUT.txt) records the actual Feast command output from a local run. Values in the offline and online results are from the generated sample data; they are not a production feature service.
 
 ## Result
-State only what you completed and verified. If a tool could not be configured, document the limitation rather than claiming success.
 
-## Output
-See the `OUTPUT.txt` file in this experiment folder for the sample/expected output format. Outputs that depend on running an external tool are labelled illustrative and should not be interpreted as proof of execution.
+The local Feast workflow successfully applied definitions, returned historical features, materialized two feature views to SQLite, performed online feature retrieval, and demonstrated updating a driver's features. The provider, registry, and online store are local only; shared or production infrastructure is not configured.
 
 ## Viva questions
-1. What problem does this tool or workflow solve?
-2. What is one limitation or failure mode?
-3. How can the result be reproduced?
 
-
-## Concept summary
-Feature stores promote reusable feature definitions; offline retrieval is for historical training data and online retrieval is for low-latency serving.
-
-## Outcome summary
-A SQLite feature-store concept demo is included. It is explicitly distinct from a configured Feast deployment.
-
-## Related files
-- [`feature_store_demo.py`](./feature_store_demo.py) demonstrates simple local feature storage using SQLite.
-- The generated SQLite database is a local artifact and is excluded from Git.
+1. How does historical feature retrieval prevent training-serving skew?
+2. Why does an online store need materialized values?
+3. What is the difference between a feature view and a feature service?

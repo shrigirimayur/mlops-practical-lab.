@@ -1,13 +1,13 @@
-EXPERIMENT 4 — EXPECTED OUTPUT FORMAT
-Run from the repository root:
+Experiment 4 — Data processing pipeline
+
+Command:
 python experiment-04-data-pipeline/pipeline.py
 
-Typical output for the included 10-row demonstration dataset:
-Created demonstration input data.
+Captured output:
 Input rows: 10
 Training rows: 8
 Test rows: 2
 Processed feature count: 2
-Saved test partition: .../experiment-04-data-pipeline/data/processed.csv
+Saved test partition: data\processed.csv
 
-The exact path depends on the operating system. If the script has already created raw.csv, the first line may not appear.
+The script created the synthetic input data on its first run. Preprocessing was fitted on the training split and applied to the test split.

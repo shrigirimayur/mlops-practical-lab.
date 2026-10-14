@@ -1,8 +1,17 @@
-EXPERIMENT 3 — SAMPLE OUTPUT FORMAT (ILLUSTRATIVE)
-$ dvc --version
-3.x.x
+Experiment 3 — Dataset tracking with DVC
 
-$ dvc status
+DVC: 3.67.1
+Dataset: generated sample with 5 rows.
+Execution: isolated temporary Git repository and local DVC remote; no cloud remote was configured.
+
+Captured output:
+Created sample dataset: ...\data\students.csv (5 rows)
+To track the changes with git, run:
+    git add 'data\.gitignore' 'data\students.csv.dvc'
+Setting 'local' as a default remote.
+1 file pushed
 Data and pipelines are up to date.
+1 file added
+Restored dataset: True
 
-Interpretation: DVC tracks data artifacts through metadata and a cache/remote. A successful status depends on a configured DVC project; the lines above are examples, not an execution log.
+The tracked file was removed from the temporary working copy and restored using dvc pull.

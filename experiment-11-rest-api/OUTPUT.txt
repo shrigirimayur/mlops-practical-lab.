@@ -1,14 +1,19 @@
-EXPERIMENT 11 — EXAMPLE API RESPONSE SHAPES (ILLUSTRATIVE)
+Experiment 11 — Flask model API
 
+Validation method: Flask test client, exercising the application's real request handlers.
+Model: RandomForestClassifier trained on the scikit-learn Iris dataset.
+
+Captured responses:
 GET /health
-{"status":"ok"}
+HTTP 200
+{"status": "ok"}
 
-POST /predict response shape:
-{
-  "prediction": 0,
-  "class_name": "setosa",
-  "probabilities": [0.98, 0.01, 0.01],
-  "latency_ms": 2.5
-}
+POST /predict with features [5.1, 3.5, 1.4, 0.2]
+HTTP 200
+{"class_name": "setosa", "latency_ms": 10.353, "prediction": 0, "probabilities": [1.0, 0.0, 0.0]}
 
-Prediction and latency values above are examples only. The running Flask app returns the actual values for each request.
+POST /predict with invalid features [1, 2]
+HTTP 400
+{"error": "features must be a list of four numbers"}
+
+The recorded latency is from one in-process test-client request; it is not a network benchmark.

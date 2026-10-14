@@ -13,15 +13,15 @@ Package the model-serving application and its Python dependencies into a Docker 
 ## Requirements
 
 - Docker Engine or Docker Desktop installed and running
-- Python project dependencies described in the repository-root `requirements.txt`
+- The Python dependencies in [`experiment-11-rest-api/requirements.txt`](../experiment-11-rest-api/requirements.txt)
 
 ## Procedure
 
-1. Review the canonical [`Dockerfile`](../Dockerfile) and [`.dockerignore`](../.dockerignore) at the repository root.
+1. Review [`Dockerfile`](./Dockerfile), the API dependencies in [Experiment 11](../experiment-11-rest-api/requirements.txt), and the root [`.dockerignore`](../.dockerignore). The build context must be the repository root because the Dockerfile copies the API files from Experiment 11.
 2. From the repository root, build the image:
 
    ```bash
-   docker build -t mlops-practical:1.0 .
+   docker build -f experiment-10-docker/Dockerfile -t mlops-practical:1.0 .
    ```
 
 3. Start the container:
@@ -40,13 +40,9 @@ Package the model-serving application and its Python dependencies into a Docker 
 
 On Windows, use `curl.exe` if PowerShell resolves `curl` to its web-request alias. If port 8000 is already in use, choose another host port, for example `-p 8001:8000`, and use that port in the request URL.
 
-## Observation and result
+## Captured environment result
 
-Record the Docker version, image tag, actual command output, and health response. A Dockerfile or an illustrative output example is not evidence that an image was built or a container ran.
-
-## Expected output format
-
-See [`OUTPUT.txt`](./OUTPUT.txt) for an illustrative format only.
+[`OUTPUT.txt`](./OUTPUT.txt) records the Docker availability check. No image-build output is claimed when the Docker CLI or daemon is unavailable.
 
 ## Viva questions
 
@@ -57,4 +53,4 @@ See [`OUTPUT.txt`](./OUTPUT.txt) for an illustrative format only.
 ## Related practicals
 
 - Model API: [Experiment 11](../experiment-11-rest-api/README.md)
-- Integrated checklist: [Experiment 12](../experiment-12-integrated-workflow/README.md)
+- Integrated results: [Experiment 12](../experiment-12-integrated-workflow/README.md)

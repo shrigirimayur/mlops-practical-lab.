@@ -6,3 +6,4 @@ pytest
 flask
 mlflow
 dvc
+feast==0.67.0

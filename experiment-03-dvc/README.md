@@ -31,14 +31,8 @@ dvc status
 `dvc init` is a one-time repository setup. The sample data path is relative to the repository root. Configure a remote according to its storage provider and keep credentials out of Git; a local DVC remote is not a cloud/shared remote.
 
 
-## Observation
-Write what you actually observed. Include tool versions, commands, important values, errors, and how you resolved them.
-
-## Result
-State only what you completed and verified. If a tool could not be configured, document the limitation rather than claiming success.
-
-## Output
-See the `OUTPUT.txt` file in this experiment folder for the sample/expected output format. Outputs that depend on running an external tool are labelled illustrative and should not be interpreted as proof of execution.
+## Observed result
+The captured DVC demonstration output is in [`OUTPUT.txt`](./OUTPUT.txt). It records a temporary local remote, not a shared cloud remote; the DVC objects are not presented as a persistent hosted remote.
 
 ## Viva questions
 1. What problem does this tool or workflow solve?

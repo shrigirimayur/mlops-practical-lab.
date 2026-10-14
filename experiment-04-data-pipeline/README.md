@@ -24,14 +24,8 @@ python experiment-04-data-pipeline/pipeline.py
 The script uses a small generated sample dataset so the basic workflow can be tested. Replace it with the dataset required by your course if needed.
 
 
-## Observation
-Write what you actually observed. Include tool versions, commands, important values, errors, and how you resolved them.
-
-## Result
-State only what you completed and verified. If a tool could not be configured, document the limitation rather than claiming success.
-
-## Output
-See the `OUTPUT.txt` file in this experiment folder for the sample/expected output format. Outputs that depend on running an external tool are labelled illustrative and should not be interpreted as proof of execution.
+## Observed result
+The captured run processed 10 rows into 8 training rows and 2 test rows, with 2 engineered features. See [`OUTPUT.txt`](./OUTPUT.txt) for the recorded command output.
 
 ## Viva questions
 1. What problem does this tool or workflow solve?

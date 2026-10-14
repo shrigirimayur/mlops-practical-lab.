@@ -1,7 +1,19 @@
-EXPERIMENT 9 — EXPECTED GITHUB ACTIONS JOB STEPS
-1. Checkout repository
-2. Set up Python
-3. Install dependencies
-4. Run tests with pytest
+Experiment 9 — local CI-equivalent test run
+============================================
 
-Actual workflow status: available in the repository's Actions tab after pushing the workflow. Do not mark it successful unless a real run passes.
+Command:
+  python -m pytest -v experiment-08-testing
+
+Environment:
+  Windows, Python 3.14.7, pytest 9.1.1
+
+Captured result:
+  collected 4 items
+  experiment-08-testing/test_validation.py::test_valid_frame PASSED
+  experiment-08-testing/test_validation.py::test_empty_frame PASSED
+  experiment-08-testing/test_validation.py::test_missing_target PASSED
+  experiment-08-testing/test_validation.py::test_missing_target_value PASSED
+  4 passed in 0.80s
+
+This is the local command configured in GitHub Actions. A workflow run for the
+updated repository revision will be linked here after the push is verified.

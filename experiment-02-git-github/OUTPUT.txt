@@ -1,13 +1,26 @@
-EXPERIMENT 2 — SAMPLE OUTPUT FORMAT (ILLUSTRATIVE)
-$ git --version
-git version 2.x.x
+Experiment 2 — Git branching, merge, and conflict resolution
 
-$ git log --oneline
-<commit-id> Add initial practical files
-<commit-id> Add project README
+Git: 2.55.0.windows.3
+Execution: disposable local repository; the submitted repository was not used to create the conflict.
 
-$ git status
-On branch main
-nothing to commit, working tree clean
+Captured branch/commit sequence:
+main: 8963ada Add baseline
+feature/docs: 7e8deb9 Update on feature branch
+main: 8bfd5ba Update on main
 
-Interpretation: Git tracks project history as commits. Replace version, commit IDs and status with actual output if recording a real run.
+Captured merge result:
+Auto-merging notes.txt
+CONFLICT (content): Merge conflict in notes.txt
+Automatic merge failed; fix conflicts and then commit the result.
+merge exit code: 1
+
+After resolving the file and committing:
+*   c54e768 Resolve merge conflict
+|\
+| * 7e8deb9 Update on feature branch
+* | 8bfd5ba Update on main
+|/
+* 8963ada Add baseline
+
+Final repository status: clean on main.
+The temporary repository was removed after the demonstration.

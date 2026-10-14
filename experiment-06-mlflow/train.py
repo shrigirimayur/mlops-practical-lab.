@@ -22,7 +22,11 @@ def main():
         }
         mlflow.log_params({"model_type": "RandomForestRegressor", "n_estimators": 100, "max_depth": 6})
         mlflow.log_metrics(metrics)
-        mlflow.sklearn.log_model(model, name="model")
+        mlflow.sklearn.log_model(
+            model,
+            name="model",
+            skops_trusted_types=["sklearn.tree._tree.Tree"],
+        )
         print("Logged MLflow run:", mlflow.active_run().info.run_id)
         print("Metrics:", metrics)
 

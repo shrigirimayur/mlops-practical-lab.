@@ -13,13 +13,17 @@ dist/
 *.egg-info/
 .coverage
 coverage.xml
+mlflow.db
+mlartifacts/
 .DS_Store
 Thumbs.db
 *.sqlite-wal
 *.sqlite-shm
+*.db
 .dvc/cache/
 .dvc/tmp/
 .dvc/config.local
 experiment-04-data-pipeline/data/raw.csv
 experiment-04-data-pipeline/data/processed.csv
+experiment-03-dvc/data/students.csv
 experiment-05-feature-store/features.sqlite

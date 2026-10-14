@@ -35,7 +35,7 @@ def main():
     print(f"Training rows: {len(X_train)}")
     print(f"Test rows: {len(X_test)}")
     print(f"Processed feature count: {X_train_p.shape[1]}")
-    print(f"Saved test partition: {OUT}")
+    print(f"Saved test partition: {OUT.relative_to(HERE)}")
 
 if __name__ == "__main__":
     main()

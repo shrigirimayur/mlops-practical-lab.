@@ -4,21 +4,19 @@
 Install/configure Git, create commits and branches, merge changes, resolve a merge conflict, and share the repository.
 
 ## Requirements
-- Python 3.10+ for Python examples
-- Relevant tool listed in the procedure
-- Work from the repository root unless stated otherwise
+- Git
 
 ## Procedure
 1. Verify `git --version`.
 2. Configure `user.name` and `user.email` for this repository or globally.
-3. Run `git init`, `git add`, and `git commit`.
-4. Create a feature branch, edit a file, commit, and merge.
-5. Create a controlled conflict in a test file and resolve it.
-6. Push to a GitHub repository you own.
+3. Run `git init`, `git add`, and `git commit` in a new project repository.
+4. Create a feature branch, edit a file, commit, and merge it.
+5. Create and resolve a controlled conflict in a disposable test repository; do not create a conflict in your submitted project.
+6. Push to the GitHub repository and confirm the commit appears remotely.
 
 For repository-only identity configuration, run `git config user.name "Your Name"` and `git config user.email "you@example.com"` from the repository root. Use `--global` only if you intend to use that identity for all repositories on this computer.
 
-## Example commands and notes
+## Example commands
 ```bash
 git --version
 git config user.name "Your Name"
@@ -26,25 +24,24 @@ git config user.email "you@example.com"
 git init
 git status
 git add .
-git commit -m "Add initial practical files"
+git commit -m "Add project files"
 git switch -c feature/docs
 git switch main
-git merge feature/docs
+git merge --no-ff feature/docs
 git log --oneline
 git remote -v
 ```
 
-Run Git operations from the project root. To publish this project as its own repository, follow [`UPLOAD_TO_GITHUB.md`](../UPLOAD_TO_GITHUB.md) and use a dedicated GitHub repository; do not initialize Git from a parent folder that contains unrelated files.
+Set a repository-specific identity with `git config user.name` and `git config user.email`. Avoid `--global` if you only want to configure this repository. GitHub authentication should use Git Credential Manager or another approved credential helper.
 
 
-## Observation
-Write what you actually observed. Include tool versions, commands, important values, errors, and how you resolved them.
+## Captured run
+
+[`OUTPUT.txt`](./OUTPUT.txt) records the actual branch, merge, conflict, and resolution operations performed in a disposable local Git repository.
 
 ## Result
-State only what you completed and verified. If a tool could not be configured, document the limitation rather than claiming success.
 
-## Output
-See the `OUTPUT.txt` file in this experiment folder for the sample/expected output format. Outputs that depend on running an external tool are labelled illustrative and should not be interpreted as proof of execution.
+The feature branch and main branch contained conflicting edits; Git reported a content conflict, which was resolved and committed. The final history contained both lines of work and a merge commit.
 
 ## Viva questions
 1. What problem does this tool or workflow solve?
@@ -56,4 +53,4 @@ See the `OUTPUT.txt` file in this experiment folder for the sample/expected outp
 Commits capture checkpoints, branches isolate work, and merges integrate changes. Conflicts are resolved by editing the final file and committing it.
 
 ## Outcome summary
-The Git procedure and command checklist are documented. Remote operations require the user's own GitHub repository and credentials.
+Git branch/merge/conflict behaviour is demonstrated locally. Remote collaboration requires a GitHub account and authenticated remote.
