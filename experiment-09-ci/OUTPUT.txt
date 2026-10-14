@@ -15,5 +15,11 @@ Captured result:
   experiment-08-testing/test_validation.py::test_missing_target_value PASSED
   4 passed in 0.80s
 
-This is the local command configured in GitHub Actions. A workflow run for the
-updated repository revision will be linked here after the push is verified.
+GitHub Actions result:
+  Workflow: Python CI, run #2
+  Status: success
+  Tested commit: 4e68f60f77fefea8ee2ee5974568be04b4ec73ac
+  Run: https://github.com/shrigirimayur/mlops-practical-lab./actions/runs/38623459566
+
+The workflow completed dependency installation and the configured pytest step
+successfully on ubuntu-latest with Python 3.11.

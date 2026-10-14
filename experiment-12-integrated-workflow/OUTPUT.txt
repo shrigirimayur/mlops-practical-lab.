@@ -29,8 +29,9 @@ Experiment 7: Grid Search and Random Search both selected model__C=0.1.
   Test F1:            0.9793
 
 Experiment 8: Local test suite passed: 4 passed.
-Experiment 9: Local CI-equivalent test command passed: 4 passed. The actual
-GitHub Actions run for the pushed code revision will be added after verification.
+Experiment 9: GitHub Actions Python CI run #2 completed successfully on
+commit 4e68f60. See:
+https://github.com/shrigirimayur/mlops-practical-lab./actions/runs/38623459566
 
 Experiment 10: Docker CLI/Engine was unavailable in the execution environment.
 No image build or container run is claimed.
