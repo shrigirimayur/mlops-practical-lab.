@@ -1,0 +1,19 @@
+stages:
+  generate_data:
+    cmd: python scripts/generate_dataset.py
+    outs:
+      - data/raw/customers.csv
+  preprocess:
+    cmd: python scripts/preprocess_data.py
+    deps:
+      - data/raw/customers.csv
+      - scripts/preprocess_data.py
+    outs:
+      - data/processed/customers_clean.csv
+  engineer_features:
+    cmd: python scripts/engineer_features.py
+    deps:
+      - data/processed/customers_clean.csv
+      - scripts/engineer_features.py
+    outs:
+      - data/features/customer_features.csv

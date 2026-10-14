@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.DS_Store
+# Generated outputs are reproducible and can be recreated by the scripts.
+data/raw/*.csv
+data/processed/*.csv
+data/features/*.csv
+experiment-5-feature-store/*.db
+.dvc/cache/
+.dvc/tmp/

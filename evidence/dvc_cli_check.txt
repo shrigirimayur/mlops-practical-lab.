@@ -1,0 +1,8 @@
+Command: python scripts/run_dvc_practical.py
+Exit code: 2
+STDOUT:
+
+STDERR:
+ERROR: DVC CLI was not found. Install dependencies first:
+  python -m pip install -r requirements.txt
+Then reopen the terminal and run: python scripts/run_dvc_practical.py

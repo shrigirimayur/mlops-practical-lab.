@@ -1,0 +1,3 @@
+pandas>=2.0
+# DVC is a CLI dependency for Experiment 3. Install with: python -m pip install -r requirements.txt
+dvc>=3.0,<4
