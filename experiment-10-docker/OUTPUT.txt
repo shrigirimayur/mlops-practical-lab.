@@ -1,0 +1,9 @@
+EXPERIMENT 10 — SAMPLE OUTPUT FORMAT (ILLUSTRATIVE)
+$ docker build -t mlops-practical:1.0 .
+[Docker build progress and final image tag]
+
+$ docker images
+REPOSITORY         TAG     IMAGE ID      SIZE
+mlops-practical    1.0     <image-id>    <size>
+
+Run the commands with Docker Engine/Desktop running to obtain actual image ID, size and build output.

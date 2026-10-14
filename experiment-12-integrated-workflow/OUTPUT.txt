@@ -1,0 +1,12 @@
+EXPERIMENT 12 — INTEGRATION SUMMARY TEMPLATE
+Source control: documented
+Data versioning: DVC procedure included
+Data pipeline: runnable demonstration included
+Feature store: SQLite concept demo included; Feast setup documented
+Experiment tracking: MLflow training script included
+Testing: pytest tests included
+CI: GitHub Actions workflow included
+Containerization: Dockerfile included
+Serving: Flask API included
+
+This is a package inventory, not a claim that all integrations have been executed end-to-end. Verify each external tool before reporting runtime success.

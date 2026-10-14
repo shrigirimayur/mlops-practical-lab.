@@ -1,0 +1,1 @@
+The canonical GitHub Actions workflow is at the repository root: `.github/workflows/ci.yml`. Do not create a duplicate workflow in this experiment folder.

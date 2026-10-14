@@ -1,0 +1,7 @@
+# Run each command deliberately in your repository.
+git --version
+git status
+git log --oneline
+git branch
+git remote -v
+# Branch/merge and push steps are documented in README.md.

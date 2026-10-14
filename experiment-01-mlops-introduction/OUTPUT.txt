@@ -1,0 +1,11 @@
+EXPERIMENT 1 — SAMPLE OUTPUT (ILLUSTRATIVE)
+MLOps lifecycle:
+1. Problem definition
+2. Data collection and validation
+3. Preprocessing and feature engineering
+4. Model training and evaluation
+5. Versioning, packaging and deployment
+6. Monitoring and retraining
+
+Conclusion: MLOps coordinates code, data, features, models, deployment and monitoring across the ML lifecycle.
+Note: This is a written conceptual output; render the included Mermaid file for a visual diagram.

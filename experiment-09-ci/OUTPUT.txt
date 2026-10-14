@@ -1,0 +1,7 @@
+EXPERIMENT 9 — EXPECTED GITHUB ACTIONS JOB STEPS
+1. Checkout repository
+2. Set up Python
+3. Install dependencies
+4. Run tests with pytest
+
+Actual workflow status: available in the repository's Actions tab after pushing the workflow. Do not mark it successful unless a real run passes.

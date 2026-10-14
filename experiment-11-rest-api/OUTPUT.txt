@@ -1,0 +1,14 @@
+EXPERIMENT 11 — EXAMPLE API RESPONSE SHAPES (ILLUSTRATIVE)
+
+GET /health
+{"status":"ok"}
+
+POST /predict response shape:
+{
+  "prediction": 0,
+  "class_name": "setosa",
+  "probabilities": [0.98, 0.01, 0.01],
+  "latency_ms": 2.5
+}
+
+Prediction and latency values above are examples only. The running Flask app returns the actual values for each request.

@@ -1,0 +1,12 @@
+flowchart TD
+    A[Problem Definition] --> B[Data Collection]
+    B --> C[Data Validation]
+    C --> D[Preprocessing and Features]
+    D --> E[Model Training]
+    E --> F[Evaluation and Approval]
+    F --> G[Version, Package, Deploy]
+    G --> H[Monitor Data, Model and Service]
+    H --> I{Quality or Drift Issue?}
+    I -- Yes --> J[Investigate, Retrain or Roll Back]
+    J --> B
+    I -- No --> H

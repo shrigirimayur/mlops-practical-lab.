@@ -1,0 +1,8 @@
+EXPERIMENT 3 — SAMPLE OUTPUT FORMAT (ILLUSTRATIVE)
+$ dvc --version
+3.x.x
+
+$ dvc status
+Data and pipelines are up to date.
+
+Interpretation: DVC tracks data artifacts through metadata and a cache/remote. A successful status depends on a configured DVC project; the lines above are examples, not an execution log.

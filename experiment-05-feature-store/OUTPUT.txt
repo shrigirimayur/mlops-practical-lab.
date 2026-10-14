@@ -1,0 +1,12 @@
+EXPERIMENT 5 — EXPECTED OUTPUT FROM THE INCLUDED SQLITE DEMO
+Run:
+python experiment-05-feature-store/feature_store_demo.py
+
+Expected rows:
+Feature rows retrieved: 3
+(1, 20, 100)
+(2, 25, 500)
+(3, 31, 900)
+Note: SQLite demo only; Feast must be configured separately.
+
+This demonstrates feature storage/retrieval concepts; it does not claim a Feast server or Feast provider was run.
