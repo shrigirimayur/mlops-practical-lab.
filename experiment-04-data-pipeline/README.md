@@ -4,28 +4,18 @@
 Load, validate, preprocess, engineer features and execute a repeatable data pipeline.
 
 ## Requirements
-- Python 3.10+ for Python examples
-- Relevant tool listed in the procedure
-- Work from the repository root unless stated otherwise
+- Python 3.10 or later
+- Install this folder's packages with `python -m pip install -r requirements.txt`
 
 ## Procedure
-1. Review `pipeline.py`.
-2. Run the script from the repository root.
-3. Check generated output and validation messages.
-4. Test missing target and empty input cases.
-5. Record actual row counts and feature count.
+1. Open PowerShell in this folder.
+2. Install the listed packages and run `python pipeline.py`.
+3. Review `data/raw.csv` and the generated `data/processed.csv`.
 
 
 ## Example commands and notes
-```bash
-python experiment-04-data-pipeline/pipeline.py
-```
-
-The script uses a small generated sample dataset so the basic workflow can be tested. Replace it with the dataset required by your course if needed.
-
-
 ## Observed result
-The captured run processed 10 rows into 8 training rows and 2 test rows, with 2 engineered features. See [`OUTPUT.txt`](./OUTPUT.txt) for the recorded command output.
+The pipeline processed 10 sample rows into 8 training rows and 2 test rows, using 2 features. See [`OUTPUT.txt`](./OUTPUT.txt) for the captured command output.
 
 ## Viva questions
 1. What problem does this tool or workflow solve?
@@ -37,4 +27,4 @@ The captured run processed 10 rows into 8 training rows and 2 test rows, with 2 
 The demonstration script validates input, splits rows, fits preprocessing on training data, and writes a processed test partition.
 
 ## Outcome summary
-A runnable data pipeline is included. Output row counts are printed at runtime and depend on the selected input data.
+The script creates sample input data when needed, validates it, fits preprocessing on training data only, and writes the processed test partition.

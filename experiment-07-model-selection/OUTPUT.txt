@@ -1,22 +1,12 @@
-Experiment 7 — Grid Search and Random Search
-
-Command:
-python experiment-07-model-selection/model_selection.py
-
-Dataset: scikit-learn breast cancer classification dataset
-Split: 80% training, 20% held-out test; random_state=42; stratified.
-Tuning metric: F1; 5-fold cross-validation.
-
+Experiment 7 - Grid and Random Search
+Command: python model_selection.py
 Grid Search
 Best parameters: {'model__C': 0.1}
 Best CV F1: 0.9845
 Test accuracy: 0.9737
 Test F1: 0.9793
-
 Random Search
 Best parameters: {'model__C': 0.1}
 Best CV F1: 0.9845
 Test accuracy: 0.9737
 Test F1: 0.9793
-
-Both methods selected the same parameter on this finite search space and random seed.

@@ -1,6 +1,9 @@
 import json
+import shutil
 import subprocess
+import sys
 from datetime import datetime
+from pathlib import Path
 
 import pandas as pd
 
@@ -11,7 +14,14 @@ from feast.data_source import PushMode
 def run_demo():
     store = FeatureStore(repo_path=".")
     print("\n--- Run feast apply ---")
-    subprocess.run(["feast", "apply"], check=True)
+    feast = shutil.which("feast")
+    if feast is None:
+        local_executable = Path(sys.executable).parent / "feast.exe"
+        if not local_executable.exists():
+            raise RuntimeError("Feast CLI is not installed in this Python environment.")
+        feast = str(local_executable)
+    subprocess.run([feast, "apply"], check=True, stdout=subprocess.DEVNULL)
+    print("Feast apply: succeeded")
 
     print("\n--- Historical features for training ---")
     fetch_historical_features_entity_df(store, for_batch_scoring=False)
@@ -20,7 +30,9 @@ def run_demo():
     fetch_historical_features_entity_df(store, for_batch_scoring=True)
 
     print("\n--- Load features into online store ---")
-    store.materialize_incremental(end_date=datetime.now())
+    store.materialize_incremental(
+        end_date=datetime.now(), feature_views=["driver_hourly_stats"]
+    )
 
     print("\n--- Online features ---")
     fetch_online_features(store)
@@ -43,10 +55,10 @@ def run_demo():
             "created": [
                 datetime.now(),
             ],
-            "conv_rate": [1.0],
-            "acc_rate": [1.0],
-            "avg_daily_trips": [1000],
-            "driver_metadata": [{"vehicle_type": "truck", "rating": "5.0"}],
+            "conv_rate": [0.95],
+            "acc_rate": [0.9],
+            "avg_daily_trips": [321],
+            "driver_metadata": [{"vehicle_type": "van", "rating": "4.9"}],
             "driver_config": [
                 json.dumps({"max_distance_km": 500, "preferred_zones": ["north"]})
             ],
@@ -54,7 +66,7 @@ def run_demo():
         }
     )
     print(event_df)
-    store.push("driver_stats_push_source", event_df, to=PushMode.ONLINE_AND_OFFLINE)
+    store.push("driver_stats_push_source", event_df, to=PushMode.ONLINE)
 
     print("\n--- Online features again with updated values from a stream push---")
     fetch_online_features(store, source="push")

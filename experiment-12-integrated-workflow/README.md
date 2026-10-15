@@ -5,11 +5,11 @@ Combine source control, data tracking, pipeline execution, experiment tracking, 
 
 ## Requirements
 - Python 3.10 or later
-- Git and dependencies installed from the repository-root `requirements.txt`
+- Git, DVC, Feast, MLflow, pytest, Flask, and Docker are installed only when running the corresponding experiment
 - Optional external tools as noted in the relevant experiments
 
 ## Procedure
-1. Follow Experiments 2–11 to connect version control, data, features, training, testing, CI, packaging, and serving.
+1. Run Experiments 2–11 from their own folders to connect version control, data, features, training, testing, CI, packaging, and serving.
 2. Compare the recorded metrics and command results; identify which components use local demonstration infrastructure.
 3. Distinguish completed local integrations from unavailable infrastructure, such as a Docker daemon.
 4. Review the actual end-to-end summary in [`OUTPUT.txt`](./OUTPUT.txt).
@@ -29,7 +29,7 @@ The captured results show the successful local demonstrations and CI run, and ex
 The integrated workflow demonstrates how source, data, experiment, test, packaging, and serving stages can be connected while retaining traceability.
 
 ## Outcome summary
-The local workflow links all twelve practicals. A Docker image was not built when Docker was unavailable; the report does not claim an unverified container deployment.
+The integrated workflow summarizes the captured results from the individual practicals. A Docker image was not built when Docker was unavailable; the report does not claim an unverified container deployment.
 
 ## Related files
-- [Consolidated practical report](../reports/MLOps_Practical_Lab_Report.md) summarizes the twelve topics and the verified results.
+- Each preceding experiment has its own `README.md` and captured `OUTPUT.txt`.

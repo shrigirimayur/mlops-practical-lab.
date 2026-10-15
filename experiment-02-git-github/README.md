@@ -7,14 +7,13 @@ Install/configure Git, create commits and branches, merge changes, resolve a mer
 - Git
 
 ## Procedure
-1. Verify `git --version`.
-2. Configure `user.name` and `user.email` for this repository or globally.
-3. Run `git init`, `git add`, and `git commit` in a new project repository.
-4. Create a feature branch, edit a file, commit, and merge it.
-5. Create and resolve a controlled conflict in a disposable test repository; do not create a conflict in your submitted project.
-6. Push to the GitHub repository and confirm the commit appears remotely.
+1. Open PowerShell in this folder and run `git --version`.
+2. Configure `user.name` and `user.email` for a practice repository.
+3. Follow the commands in [`commands.txt`](./commands.txt) to initialize, commit, branch, merge, and inspect history.
+4. Create and resolve a controlled conflict only in a disposable repository.
+5. To demonstrate remote collaboration, configure your own GitHub remote and push your branch.
 
-For repository-only identity configuration, run `git config user.name "Your Name"` and `git config user.email "you@example.com"` from the repository root. Use `--global` only if you intend to use that identity for all repositories on this computer.
+Git does not require Python packages. Configure `user.name` and `user.email` in the practice repository; use `--global` only if you want those settings on every repository.
 
 ## Example commands
 ```bash
@@ -31,9 +30,6 @@ git merge --no-ff feature/docs
 git log --oneline
 git remote -v
 ```
-
-Set a repository-specific identity with `git config user.name` and `git config user.email`. Avoid `--global` if you only want to configure this repository. GitHub authentication should use Git Credential Manager or another approved credential helper.
-
 
 ## Captured run
 
@@ -53,4 +49,4 @@ The feature branch and main branch contained conflicting edits; Git reported a c
 Commits capture checkpoints, branches isolate work, and merges integrate changes. Conflicts are resolved by editing the final file and committing it.
 
 ## Outcome summary
-Git branch/merge/conflict behaviour is demonstrated locally. Remote collaboration requires a GitHub account and authenticated remote.
+Git branch, merge, and conflict resolution were demonstrated locally in a disposable repository. A GitHub remote is optional and is not represented as part of the local conflict demonstration.

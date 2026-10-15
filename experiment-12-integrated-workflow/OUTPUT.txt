@@ -6,9 +6,10 @@ Recorded local demonstrations
 Experiment 2: Created and merged Git branches, resolved a merge conflict, and
 verified the final repository state in the isolated demonstration repository.
 
-Experiment 3: DVC tracked a five-row dataset, transferred it to a temporary
-local remote, removed the working copy, and restored it with pull. This was
-not a cloud or shared remote.
+Experiment 3: DVC tracked two dataset versions, pushed them to a temporary
+local remote, confirmed the content hash changed, removed the working copy,
+and restored the six-row second version with pull. This was not a cloud or
+shared remote.
 
 Experiment 4: Processed 10 rows into 8 training rows and 2 test rows, using
 2 features.
@@ -17,21 +18,26 @@ Experiment 5: Feast applied the local feature definitions, retrieved
 historical and online feature values from the local SQLite provider, and
 demonstrated a stream update. This was not a production feature service.
 
-Experiment 6: MLflow logged RandomForestRegressor run
-86196a77bfd44613acda9a39a20a6499.
-  MAE: 43.53563736129633
-  MSE: 2878.820810419161
-  R2:  0.45663677692410665
+Experiment 6: MLflow compared two RandomForestRegressor candidates by
+five-fold cross-validation R2 and registered the highest-scoring model.
+  Selected n_estimators: 50
+  Selected max_depth: 4
+  CV R2: 0.4037
+  Test MAE: 43.9748
+  Test MSE: 2887.8563
+  Test R2: 0.4549
+  Registered model: mlops-practical-diabetes (version 1 in the clean local run)
+  Alias: champion
 
 Experiment 7: Grid Search and Random Search both selected model__C=0.1.
   Cross-validation F1: 0.9845
   Test accuracy:      0.9737
   Test F1:            0.9793
 
-Experiment 8: Local test suite passed: 4 passed.
-Experiment 9: GitHub Actions Python CI run #2 completed successfully on
-commit 4e68f60. See:
-https://github.com/shrigirimayur/mlops-practical-lab./actions/runs/38623459566
+Experiment 8: Local test suite passed: 7 passed.
+Experiment 9: Local standalone CI test suite passed: 7 passed. The assignment's
+GitHub Actions run #3 also passed on commit 89e5c48; see:
+https://github.com/shrigirimayur/mlops-practical-lab./actions/runs/38623857295
 
 Experiment 10: Docker CLI/Engine was unavailable in the execution environment.
 No image build or container run is claimed.

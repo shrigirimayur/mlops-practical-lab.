@@ -1,28 +1,74 @@
-Experiment 5 — Local Feast feature-store workflow
+Experiment 5 - Local Feast feature-store workflow
+Command: python -u test_workflow.py (from feast_repo/feature_repo)
 
-Feast: 0.67.0
-Provider: local
-Online store: SQLite
-Command: python test_workflow.py
-Working directory: experiment-05-feature-store/feast_repo/feature_repo
 
-Applied:
-- Entity: driver
-- Feature views: driver_hourly_stats, driver_hourly_stats_fresh
-- On-demand feature views and feature services
-- Label view: driver_quality_labels
+--- Run feast apply ---
+Feast 0.67.0 notice: On demand feature view is an experimental feature. This API is stable, but the functionality does not scale well for offline retrieval
 
-Historical feature retrieval returned 3 rows (13 columns). Sample conv_rate_plus_val2 values:
-driver 1001: 10.967520
-driver 1002: 20.541862
-driver 1003: 30.870095
+Feast apply: succeeded
 
-Materialization:
-Materializing 2 feature views into the SQLite online store.
+--- Historical features for training ---
+   driver_id  ... conv_rate_plus_val2
+0       1001  ...           10.967520
+1       1002  ...           20.541862
+2       1003  ...           30.870095
 
-Online retrieval for drivers 1001 and 1002 returned feature values. A subsequent stream push updated driver 1001:
-conv_rate: 1.0
-avg_daily_trips: 1000
-driver_profile: {'age': '30', 'name': 'driver_1001_updated'}
+[3 rows x 13 columns]
 
-Result: Feast apply, historical retrieval, materialization, online retrieval, and the stream-update demonstration completed. The local provider/store are demonstration infrastructure, not a shared production service.
+--- Historical features for batch scoring ---
+   driver_id  ... conv_rate_plus_val2
+0       1001  ...           10.697694
+1       1002  ...           20.108984
+2       1003  ...           30.138133
+
+[3 rows x 13 columns]
+
+--- Load features into online store ---
+Materializing 1 feature views to 2026-10-15 01:40:13+00:00 into the sqlite online store.
+
+driver_hourly_stats from 2026-10-13 20:10:13+00:00 to 2026-10-15 01:40:13+00:00:
+
+--- Online features ---
+acc_rate  :  [1.0, 0.12540069222450256]
+conv_rate_plus_val1  :  [1001.0, 1001.9928381443024]
+conv_rate_plus_val2  :  [2001.0, 2002.9928381443024]
+driver_config  :  [{'max_distance_km': 500, 'preferred_zones': ['north']}, {'max_distance_km': 144, 'preferred_zones': ['south', 'north']}]
+driver_id  :  [1001, 1002]
+driver_metadata  :  [{'vehicle_type': 'truck', 'rating': '5.0'}, {'vehicle_type': 'sedan', 'rating': '4.4'}]
+driver_profile  :  [{'age': '30', 'name': 'driver_1001_updated'}, {'age': '35', 'name': 'driver_1002'}]
+
+--- Online features retrieved (instead) through a feature service---
+conv_rate  :  [1.0, 0.9928381443023682]
+conv_rate_plus_val1  :  [1001.0, 1001.9928381443024]
+conv_rate_plus_val2  :  [2001.0, 2002.9928381443024]
+driver_id  :  [1001, 1002]
+
+--- Online features retrieved (using feature service v3, which uses a feature view with a push source---
+acc_rate  :  [None, None]
+avg_daily_trips  :  [None, None]
+conv_rate  :  [None, None]
+conv_rate_plus_val1  :  [None, None]
+conv_rate_plus_val2  :  [None, None]
+driver_config  :  [None, None]
+driver_id  :  [1001, 1002]
+driver_metadata  :  [None, None]
+driver_profile  :  [None, None]
+
+--- Simulate a stream event ingestion of the hourly stats df ---
+   driver_id  ...                                driver_profile
+0       1001  ...  {'name': 'driver_1001_updated', 'age': '30'}
+
+[1 rows x 9 columns]
+
+--- Online features again with updated values from a stream push---
+acc_rate  :  [0.8999999761581421, None]
+avg_daily_trips  :  [321, None]
+conv_rate  :  [0.949999988079071, None]
+conv_rate_plus_val1  :  [1000.9499999880791, None]
+conv_rate_plus_val2  :  [2000.949999988079, None]
+driver_config  :  [{'max_distance_km': 500, 'preferred_zones': ['north']}, None]
+driver_id  :  [1001, 1002]
+driver_metadata  :  [{'vehicle_type': 'van', 'rating': '4.9'}, None]
+driver_profile  :  [{'age': '30', 'name': 'driver_1001_updated'}, None]
+
+Local SQLite feature data is retained for inspection.

@@ -1,17 +1,19 @@
-Experiment 3 — Dataset tracking with DVC
-
-DVC: 3.67.1
-Dataset: generated sample with 5 rows.
-Execution: isolated temporary Git repository and local DVC remote; no cloud remote was configured.
-
-Captured output:
-Created sample dataset: ...\data\students.csv (5 rows)
-To track the changes with git, run:
-    git add 'data\.gitignore' 'data\students.csv.dvc'
-Setting 'local' as a default remote.
-1 file pushed
-Data and pipelines are up to date.
-1 file added
-Restored dataset: True
-
-The tracked file was removed from the temporary working copy and restored using dvc pull.
+DVC version: 3.67.1
+Remote: temporary local directory
+First version metadata:
+outs:
+- md5: 31ec28bc9d4c1fbcaa4b015e9c0654da
+  size: 117
+  hash: md5
+  path: students.csv
+Second version metadata:
+outs:
+- md5: a35bdfe373ae24efd85955baa0171c16
+  size: 132
+  hash: md5
+  path: students.csv
+Dataset hash changed: True
+Rows restored after dvc pull: 6
+Git status:
+clean
+Windows deferred cleanup of the locked temporary workspace outside this folder.

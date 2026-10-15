@@ -7,24 +7,24 @@ Package the model-serving application and its Python dependencies into a Docker 
 ## Learning objectives
 
 - Explain the role of a Dockerfile, image, and container.
-- Build an image using the repository-root Dockerfile.
+- Build an image using this folder's Dockerfile.
 - Run the application with a port mapping and verify its health endpoint.
 
 ## Requirements
 
 - Docker Engine or Docker Desktop installed and running
-- The Python dependencies in [`experiment-11-rest-api/requirements.txt`](../experiment-11-rest-api/requirements.txt)
+- The Python dependencies listed in this experiment's `requirements.txt`
 
 ## Procedure
 
-1. Review [`Dockerfile`](./Dockerfile), the API dependencies in [Experiment 11](../experiment-11-rest-api/requirements.txt), and the root [`.dockerignore`](../.dockerignore). The build context must be the repository root because the Dockerfile copies the API files from Experiment 11.
-2. From the repository root, build the image:
+1. Review this folder's [`Dockerfile`](./Dockerfile), [`app.py`](./app.py), and `requirements.txt`.
+2. Open a terminal in this folder and build the image:
 
    ```bash
-   docker build -f experiment-10-docker/Dockerfile -t mlops-practical:1.0 .
+   docker build -t mlops-practical:1.0 .
    ```
 
-3. Start the container:
+3. In the same terminal, start the container:
 
    ```bash
    docker run --rm --name mlops-practical -p 8000:8000 mlops-practical:1.0
@@ -47,7 +47,7 @@ On Windows, use `curl.exe` if PowerShell resolves `curl` to its web-request alia
 ## Viva questions
 
 1. What is the difference between a Docker image and a container?
-2. Why does `.dockerignore` matter when building an image?
+2. Why should a Docker build context contain only the files needed by the image?
 3. What does the `-p 8000:8000` option configure?
 
 ## Related practicals

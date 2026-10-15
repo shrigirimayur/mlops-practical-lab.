@@ -1,18 +1,15 @@
-Experiment 6 — MLflow model training and tracking
-
-MLflow: 3.17.1
-Command:
-python experiment-06-mlflow/train.py
-
-Captured run ID:
-86196a77bfd44613acda9a39a20a6499
-
-Model: RandomForestRegressor
-Parameters: n_estimators=100, max_depth=6, random_state=42
-Dataset: scikit-learn diabetes dataset
-Metrics:
-MAE: 43.53563736129633
-MSE: 2878.820810419161
-R2: 0.45663677692410665
-
-The model artifact and metrics were logged to the local MLflow tracking store. A model registry was not configured.
+2026/10/15 01:24:04 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 01:24:04 INFO mlflow.store.db.utils: Updating database tables
+2026/10/15 01:24:06 INFO mlflow.tracking.fluent: Experiment with name 'mlops-practical' does not exist. Creating a new experiment.
+Successfully registered model 'mlops-practical-diabetes'.
+Created version '1' of model 'mlops-practical-diabetes'.
+Candidate runs:
+  run=baae319163ec4dd18e8836fb1692386f n_estimators=50 max_depth=4 CV R2=0.4037 test R2=0.4549
+  run=e9069dea3df94eb6a6c4eebb80234614 n_estimators=100 max_depth=6 CV R2=0.3970 test R2=0.4566
+Selected run: baae319163ec4dd18e8836fb1692386f
+Selection metric (5-fold CV R2): 0.4037
+Selected parameters: n_estimators=50, max_depth=4
+Selected test metrics: {'mae': 43.97478240201259, 'mse': 2887.856262479512, 'r2': 0.45493137993111155, 'cv_r2': 0.4036649157922487}
+Registered model: mlops-practical-diabetes, version 1
+Champion alias: mlops-practical-diabetes@champion
+Tracking database: mlflow.db (local to this experiment folder)

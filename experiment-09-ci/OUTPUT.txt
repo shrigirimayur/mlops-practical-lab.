@@ -1,25 +1,4 @@
-Experiment 9 — local CI-equivalent test run
-============================================
-
-Command:
-  python -m pytest -v experiment-08-testing
-
-Environment:
-  Windows, Python 3.14.7, pytest 9.1.1
-
-Captured result:
-  collected 4 items
-  experiment-08-testing/test_validation.py::test_valid_frame PASSED
-  experiment-08-testing/test_validation.py::test_empty_frame PASSED
-  experiment-08-testing/test_validation.py::test_missing_target PASSED
-  experiment-08-testing/test_validation.py::test_missing_target_value PASSED
-  4 passed in 0.80s
-
-GitHub Actions result:
-  Workflow: Python CI, run #2
-  Status: success
-  Tested commit: 4e68f60f77fefea8ee2ee5974568be04b4ec73ac
-  Run: https://github.com/shrigirimayur/mlops-practical-lab./actions/runs/38623459566
-
-The workflow completed dependency installation and the configured pytest step
-successfully on ubuntu-latest with Python 3.11.
+Experiment 9 - Standalone CI test suite
+Command: python -m pytest -q --disable-warnings --no-header -p no:cacheprovider
+.......                                                                  [100%]
+7 passed in 3.03s

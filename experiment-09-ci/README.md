@@ -6,19 +6,20 @@ Automate dependency installation and the Experiment 8 test suite when changes ar
 
 ## Workflow
 
-The canonical workflow is [`../.github/workflows/ci.yml`](../.github/workflows/ci.yml). It checks out the repository, sets up Python 3.11, installs `requirements.txt`, and runs:
+The workflow file, dependencies, and validation test suite are included in this folder. GitHub Actions only discovers workflow files under `.github/workflows` at the root of a GitHub repository. To run this practical as its own GitHub repository, place the contents of this folder at the repository root and copy `ci.yml` to `.github/workflows/ci.yml`. Then the workflow installs `requirements.txt` and runs the included tests:
 
 ```bash
-python -m pytest -v experiment-08-testing
+python -m pip install -r requirements.txt
+python -m pytest -v
 ```
 
 ## Captured result
 
-[`OUTPUT.txt`](./OUTPUT.txt) identifies the actual GitHub Actions run for the published revision. Open the run to inspect the job and individual steps.
+[`OUTPUT.txt`](./OUTPUT.txt) records the local seven-test run and a prior successful GitHub Actions run. The workflow source stays in this experiment folder so the practical is self-contained; GitHub does not auto-run this nested workflow in the assignment repository.
 
 ## Result
 
-GitHub Actions executes the same tests used locally and retains the run logs with the commit. A successful CI job verifies this test command in the runner environment; it does not prove model quality or Docker deployment.
+GitHub Actions installs the specified dependencies and runs the included tests on pushes and pull requests. Passing CI verifies the configured tests in the runner environment; it does not prove model quality or Docker deployment.
 
 ## Viva questions
 

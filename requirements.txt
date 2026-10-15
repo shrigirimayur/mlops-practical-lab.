@@ -1,9 +1,0 @@
-pandas
-numpy
-scikit-learn
-joblib
-pytest
-flask
-mlflow
-dvc
-feast==0.67.0

@@ -6,34 +6,30 @@ Use automated tests to check data-validation behaviour and understand how tests 
 
 ## Learning objectives
 
-- Run tests with pytest from the repository root.
+- Run tests with pytest from this experiment folder.
 - Distinguish valid input from expected validation failures.
 - Interpret test results and identify what the current test suite does—and does not—cover.
 
 ## Requirements
 
 - Python 3.10 or later
-- Project dependencies installed from the repository-root `requirements.txt`
+- Install the packages in this folder's `requirements.txt`
 
 ## Procedure
 
-1. Review [`validation.py`](./validation.py) and [`test_validation.py`](./test_validation.py).
-2. From the repository root, run `python -m pytest -v experiment-08-testing`.
+1. Open PowerShell in this folder and install its dependencies.
+2. Run `python -m pytest -v`.
 3. Confirm the valid-input and invalid-input cases behave as expected.
-4. Add or adapt tests for any new validation rule before changing pipeline behaviour.
+4. Add or adapt tests for any new validation rule before changing pipeline behavior.
 5. Record the actual test summary, Python/pytest versions, and any failure diagnosis.
 
 ## Test scope
 
-The suite contains four tests for a valid frame, an empty frame, a missing target column, and missing target values. It does not test every training pipeline or model-output case; additional practicals should add tests for their own behaviours.
+The suite checks input validation, trains a small model pipeline, and verifies prediction row counts and missing values. These are focused unit tests, not a complete test suite for every MLOps tool in the repository.
 
 ## Captured result
 
 The actual command, Python/pytest versions, and test results are recorded in [`OUTPUT.txt`](./OUTPUT.txt).
-
-## Expected output format
-
-See [`OUTPUT.txt`](./OUTPUT.txt) for the captured test run.
 
 ## Viva questions
 

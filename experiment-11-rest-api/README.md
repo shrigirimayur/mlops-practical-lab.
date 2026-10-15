@@ -4,25 +4,23 @@
 Expose a trained demonstration model through a Flask REST API and test valid/invalid requests.
 
 ## Requirements
-- Python 3.10+ for Python examples
-- Relevant tool listed in the procedure
-- Work from the repository root unless stated otherwise
+- Python 3.10 or later
+- Install this folder's packages with `python -m pip install -r requirements.txt`
 
 ## Procedure
-1. From the repository root, start the app with `python experiment-11-rest-api/app.py`.
-2. Test `/health`.
-3. Send a JSON POST request to `/predict`.
-4. Test malformed input and incorrect feature counts.
-5. Record response body and latency from your actual run.
+1. Open PowerShell in this folder and install the packages.
+2. Start the app with `python app.py`.
+3. In a second terminal, test the health and prediction endpoints.
+4. Send an invalid feature count and confirm the API returns HTTP 400.
 
 
 ## Example commands and notes
-```bash
-python experiment-11-rest-api/app.py
-curl http://127.0.0.1:8000/health
+```powershell
+python -m pip install -r requirements.txt
+python app.py
 ```
 
-Use Postman or cURL for `/predict`. The included example uses the Iris dataset and expects four numeric features.
+Use Postman or cURL for requests in [`requests.md`](./requests.md). The example uses the Iris dataset and expects four numeric features.
 
 
 ## Observed result
@@ -38,7 +36,7 @@ The Flask test client returned HTTP 200 for health and a valid Iris prediction, 
 The API validates request fields and returns a prediction response; a health endpoint supports basic service checks.
 
 ## Outcome summary
-A Flask app and request examples are included. Response values and latency are generated at runtime.
+A Flask app trains its demonstration classifier when it starts. The test-client response time is not a network performance benchmark.
 
 ## Related files
 - [`app.py`](./app.py) contains the Flask application and trained Iris classifier.

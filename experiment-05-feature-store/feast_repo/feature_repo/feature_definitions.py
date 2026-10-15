@@ -19,7 +19,7 @@ from feast import (
 from feast.feature_logging import LoggingConfig
 from feast.infra.offline_stores.file_source import FileLoggingDestination
 from feast.on_demand_feature_view import on_demand_feature_view
-from feast.types import Float32, Float64, Int64, Json, Map, String, Struct
+from feast.types import Float32, Float64, Int64, Json, String, Struct
 from feast.value_type import ValueType
 
 # Define a project for the feature repo
@@ -57,8 +57,8 @@ driver_stats_fv = FeatureView(
         Field(name="avg_daily_trips", dtype=Int64, description="Average daily trips"),
         Field(
             name="driver_metadata",
-            dtype=Map,
-            description="Driver metadata as key-value pairs",
+            dtype=Struct({"vehicle_type": String, "rating": String}),
+            description="Driver metadata as a typed struct",
         ),
         Field(
             name="driver_config", dtype=Json, description="Driver configuration as JSON"
@@ -137,7 +137,10 @@ driver_stats_fresh_fv = FeatureView(
         Field(name="conv_rate", dtype=Float32),
         Field(name="acc_rate", dtype=Float32),
         Field(name="avg_daily_trips", dtype=Int64),
-        Field(name="driver_metadata", dtype=Map),
+        Field(
+            name="driver_metadata",
+            dtype=Struct({"vehicle_type": String, "rating": String}),
+        ),
         Field(name="driver_config", dtype=Json),
         Field(name="driver_profile", dtype=Struct({"name": String, "age": String})),
     ],
