@@ -1,56 +1,37 @@
-# Experiment 10 — Containerization with Docker
+# Practical 10 | Containerizing a Model Service
+
+**Focus:** Dockerfile, image build, container run, port mapping and health verification.
 
 ## Aim
 
-Package the model-serving application and its Python dependencies into a Docker image, then run and verify the container.
-
-## Learning objectives
-
-- Explain the role of a Dockerfile, image, and container.
-- Build an image using this folder's Dockerfile.
-- Run the application with a port mapping and verify its health endpoint.
+Package the model API and its Python dependencies into a Docker image and verify the running container through its health endpoint.
 
 ## Requirements
 
-- Docker Engine or Docker Desktop installed and running
-- The Python dependencies listed in this experiment's `requirements.txt`
+- Docker Engine or Docker Desktop installed and running (`docker info` must succeed).
+- This folder's [`Dockerfile`](./Dockerfile), [`app.py`](./app.py) and `requirements.txt`.
 
 ## Procedure
 
-1. Review this folder's [`Dockerfile`](./Dockerfile), [`app.py`](./app.py), and `requirements.txt`.
-2. Open a terminal in this folder and build the image:
+Open a terminal in this folder:
 
-   ```bash
-   docker build -t mlops-practical:1.0 .
-   ```
+```powershell
+docker build -t mlops-practical:1.0 .
+docker run --rm --name mlops-practical -p 8000:8000 mlops-practical:1.0
+```
 
-3. In the same terminal, start the container:
+In a second terminal, verify the service:
 
-   ```bash
-   docker run --rm --name mlops-practical -p 8000:8000 mlops-practical:1.0
-   ```
+```powershell
+curl.exe http://127.0.0.1:8000/health
+```
 
-4. In a second terminal, call the health endpoint:
+Stop the container with Ctrl+C. If port `8000` is occupied, use `-p 8001:8000` and request port `8001`.
 
-   ```bash
-   curl http://127.0.0.1:8000/health
-   ```
+## Observed result
 
-5. Stop the running container with Ctrl+C, then record the actual build result, image details, health response, and any errors.
+The execution environment did not have the Docker command available. Therefore the image build, container startup and container health check are **not verified**. The actual environment check is in [`OUTPUT.txt`](./OUTPUT.txt); the Dockerfile and reproducible commands are included for execution on a Docker-enabled system.
 
-On Windows, use `curl.exe` if PowerShell resolves `curl` to its web-request alias. If port 8000 is already in use, choose another host port, for example `-p 8001:8000`, and use that port in the request URL.
+## Conclusion
 
-## Captured environment result
-
-[`OUTPUT.txt`](./OUTPUT.txt) records the Docker availability check. No image-build output is claimed when the Docker CLI or daemon is unavailable.
-
-## Viva questions
-
-1. What is the difference between a Docker image and a container?
-2. Why should a Docker build context contain only the files needed by the image?
-3. What does the `-p 8000:8000` option configure?
-
-## Related practicals
-
-- Model API: [Experiment 11](../experiment-11-rest-api/README.md)
-- Integrated results: [Experiment 12](../experiment-12-integrated-workflow/README.md)
+The Dockerfile defines a repeatable image build context for the model API. A successful local Python run is not a substitute for building and running the container.

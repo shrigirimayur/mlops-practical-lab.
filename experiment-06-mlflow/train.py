@@ -94,7 +94,7 @@ def main():
     print(f"Selected test metrics: {best_metrics}")
     print(f"Registered model: {MODEL_NAME}, version {registered_model.version}")
     print(f"Champion alias: {MODEL_NAME}@champion")
-    print(f"Tracking database: {HERE / 'mlflow.db'}")
+    print("Tracking database: mlflow.db (local to this experiment folder)")
 
 if __name__ == "__main__":
     main()

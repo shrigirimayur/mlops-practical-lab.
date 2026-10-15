@@ -1,28 +1,34 @@
-# Experiment 3 — Dataset Versioning with DVC
+# Practical 03 | Dataset Versioning with DVC
+
+**Focus:** data tracking, dataset revisions, artifact storage, Git integration and reproducibility.
 
 ## Aim
-Track a dataset, store DVC metadata in Git, configure a remote, and compare dataset versions.
+
+Track changes to a dataset separately from source code, store its contents in a DVC remote, compare revisions and restore a tracked version.
 
 ## Requirements
+
 - Python 3.10 or later
-- Git and DVC installed
-- Install this folder's packages with `python -m pip install -r requirements.txt`
+- Git installed
+- Install this practical's dependencies: `python -m pip install -r requirements.txt`
 
 ## Procedure
-1. Run `python run_demo.py` from this folder. It creates a temporary Git/DVC project and a local remote.
-2. Review the generated `.dvc` metadata, push/pull output, and hash comparison printed by the script.
-3. Read [`create_dataset.py`](./create_dataset.py) to see the five-row source dataset.
+
+From this folder:
+
+```powershell
+python -m pip install -r requirements.txt
+python run_demo.py
+```
+
+The script creates an isolated temporary Git/DVC project, tracks the initial dataset, commits its metadata, changes the dataset, tracks and commits the new revision, pushes both versions to a temporary local remote, deletes the working copy and restores it with `dvc pull`. The assignment repository is not used as the temporary demo repository.
+
 ## Observed result
-The captured DVC demonstration output is in [`OUTPUT.txt`](./OUTPUT.txt). It records a temporary local remote, not a shared cloud remote. Running the script again makes a new isolated project and does not change this assignment's Git repository.
 
-## Viva questions
-1. What problem does this tool or workflow solve?
-2. What is one limitation or failure mode?
-3. How can the result be reproduced?
+The content hash changed between versions; `dvc pull` restored the six-row second version, and the temporary demo Git working tree was clean. Captured hashes and terminal results are in [`OUTPUT.txt`](./OUTPUT.txt).
 
+**Scope:** the remote is local and temporary, not a shared cloud or team remote. Git stores DVC metadata; DVC stores the dataset contents.
 
-## Concept summary
-DVC stores data artifact metadata in the Git workflow and manages data contents in its cache/remote. A local remote is not a shared cloud remote.
+## Conclusion
 
-## Outcome summary
-Dataset tracking, DVC metadata versioning, local push/pull, and data-hash comparison are demonstrated end to end.
+DVC makes data revisions reproducible alongside Git history. A shared remote is required when collaborators need access to the same data artifacts.

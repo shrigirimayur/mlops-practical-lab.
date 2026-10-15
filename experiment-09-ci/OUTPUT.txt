@@ -1,4 +1,5 @@
-Experiment 9 - Standalone CI test suite
+Experiment 9 - CI test suite
 Command: python -m pytest -q --disable-warnings --no-header -p no:cacheprovider
+
 .......                                                                  [100%]
-7 passed in 3.03s
+7 passed in 3.23s

@@ -1,18 +1,20 @@
-# Experiment 5 — Feature Store with Feast
+# Practical 05 | Feature Management with Feast
+
+**Focus:** feature definitions, registration, ingestion, historical retrieval, online retrieval and reuse.
 
 ## Aim
 
-Define reusable ML features, retrieve historical features for training, materialize features into a local online store, and retrieve values for inference.
+Define shared model features in Feast and demonstrate how the same feature definitions support historical training data and online inference.
 
 ## Requirements
 
 - Python 3.10 or later
-- Install the packages in this folder's `requirements.txt`
-- Feast uses the included sample Parquet sources and local SQLite store
+- Install this practical's dependencies: `python -m pip install -r requirements.txt`
+- Included sample Parquet data; local Feast provider and SQLite online store.
 
-## Run the practical
+## Procedure
 
-Open PowerShell in this folder, install its packages, and run the workflow from Feast's feature repository:
+From this folder:
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -20,26 +22,20 @@ Set-Location feast_repo\feature_repo
 python test_workflow.py
 ```
 
-The script applies feature definitions, retrieves historical training features, materializes the local online store, retrieves online features, and demonstrates a stream update. It retains local SQLite state so the registry and online-store files can be inspected after the run.
+The workflow applies the repository's feature definitions, retrieves historical features for training and batch scoring, materializes the batch feature view into the local online store, reads online features through direct and service-based requests, then pushes a fresh event and reads the updated online values.
 
-## Implementation
+## Observed result
 
-- [`feast_repo/feature_repo/feature_store.yaml`](./feast_repo/feature_repo/feature_store.yaml) configures Feast's local provider and SQLite online store.
-- [`feast_repo/feature_repo/feature_definitions.py`](./feast_repo/feature_repo/feature_definitions.py) defines entities, feature views, request-time transformations, feature services, and labels.
-- [`feast_repo/feature_repo/data/`](./feast_repo/feature_repo/data/) contains the small sample Parquet sources.
+Feast applied the definitions, returned historical features for three drivers and retrieved online values. The push-source feature service initially returns `None` because it has no pushed rows yet; after the script pushes a new event, driver `1001` returns the updated values. The second entity has no pushed update. The complete captured run is in [`OUTPUT.txt`](./OUTPUT.txt).
 
-## Captured output
+Feast prints a non-fatal notice that on-demand feature views are experimental. This local workflow completed successfully.
 
-[`OUTPUT.txt`](./OUTPUT.txt) records the actual Feast command output from a local run. Values in the offline and online results are from the generated sample data; they are not a production feature service.
+## Implementation files
 
-The installed Feast version prints a non-fatal notice that on-demand feature views are experimental; this local demonstration completes successfully.
+- [`feature_store.yaml`](./feast_repo/feature_repo/feature_store.yaml): local provider and SQLite configuration.
+- [`feature_definitions.py`](./feast_repo/feature_repo/feature_definitions.py): entity, feature views, request-time transformations, feature services and labels.
+- [`data/`](./feast_repo/feature_repo/data/): sample offline feature data.
 
-## Result
+## Conclusion
 
-The local Feast workflow successfully applied definitions, returned historical features, materialized the batch feature view to SQLite, performed online feature retrieval, and demonstrated a pushed online update. The provider, registry, and online store are local only; shared or production infrastructure is not configured.
-
-## Viva questions
-
-1. How does historical feature retrieval prevent training-serving skew?
-2. Why does an online store need materialized values?
-3. What is the difference between a feature view and a feature service?
+A feature store centralizes feature definitions and retrieval so training and serving can use consistent feature logic. This practical uses local files and SQLite; it is not a production or shared feature service.

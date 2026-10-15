@@ -1,19 +1,26 @@
-name: Experiment 9 CI
+name: MLOps Practical CI
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
+
 jobs:
-  test:
+  experiment-09-tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: experiment-09-ci
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
       - name: Install experiment dependencies
         run: python -m pip install -r requirements.txt
-      - name: Run experiment tests
+      - name: Run Experiment 9 tests
         run: python -m pytest -v

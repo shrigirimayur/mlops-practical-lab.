@@ -1,44 +1,36 @@
-# Experiment 8 — Automated Testing
+# Practical 08 | Testing an ML Workflow
+
+**Focus:** unit tests for data validation, training-pipeline behavior and prediction outputs.
 
 ## Aim
 
-Use automated tests to check data-validation behaviour and understand how tests protect an ML workflow from regressions.
-
-## Learning objectives
-
-- Run tests with pytest from this experiment folder.
-- Distinguish valid input from expected validation failures.
-- Interpret test results and identify what the current test suite does—and does not—cover.
+Use automated tests to check both accepted and invalid data, exercise a small training pipeline, and verify its predictions have the expected shape and values.
 
 ## Requirements
 
 - Python 3.10 or later
-- Install the packages in this folder's `requirements.txt`
+- Install this practical's dependencies: `python -m pip install -r requirements.txt`
 
 ## Procedure
 
-1. Open PowerShell in this folder and install its dependencies.
-2. Run `python -m pytest -v`.
-3. Confirm the valid-input and invalid-input cases behave as expected.
-4. Add or adapt tests for any new validation rule before changing pipeline behavior.
-5. Record the actual test summary, Python/pytest versions, and any failure diagnosis.
+From this folder:
 
-## Test scope
+```powershell
+python -m pip install -r requirements.txt
+python -m pytest -v
+```
 
-The suite checks input validation, trains a small model pipeline, and verifies prediction row counts and missing values. These are focused unit tests, not a complete test suite for every MLOps tool in the repository.
+The suite covers valid input, empty input, a missing target, missing target values, successful training and prediction, prediction row-count validation, and missing prediction values.
 
-## Captured result
+## Observed result
 
-The actual command, Python/pytest versions, and test results are recorded in [`OUTPUT.txt`](./OUTPUT.txt).
+All **7 tests passed** in the recorded run. The command and test summary are captured in [`OUTPUT.txt`](./OUTPUT.txt).
 
-## Viva questions
+## Files
 
-1. What is the difference between a unit test and an integration test?
-2. Why should invalid inputs be included in a validation test suite?
-3. What does a passing test suite prove, and what does it not prove?
+- [`validation.py`](./validation.py): validation and training-pipeline functions.
+- [`test_validation.py`](./test_validation.py): automated test cases.
 
-## Related files
+## Conclusion
 
-- Validation implementation: [`validation.py`](./validation.py)
-- Tests: [`test_validation.py`](./test_validation.py)
-- CI execution: [Experiment 9](../experiment-09-ci/README.md)
+The tests catch specific data and model-output regressions. They are unit-level checks; they do not validate external stores, the complete API, or deployment.

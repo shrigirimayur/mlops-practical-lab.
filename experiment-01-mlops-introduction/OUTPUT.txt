@@ -1,9 +1,6 @@
-Experiment 1 — MLOps lifecycle demonstration
-
-Command:
-python experiment-01-mlops-introduction/workflow_demo.py
-
-Python: 3.14.7
+Experiment 1 - MLOps lifecycle demonstration
+Command: python workflow_demo.py
+Python: Python 3.14.5
 
 Captured output:
 1. Problem definition
@@ -13,5 +10,3 @@ Captured output:
 5. Versioning and deployment
 6. Monitoring and retraining
 Workflow diagram: see README.md
-
-Diagram source: mlops-lifecycle.mmd

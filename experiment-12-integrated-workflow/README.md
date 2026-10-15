@@ -1,35 +1,38 @@
-# Experiment 12 — Integrated MLOps Workflow
+# Practical 12 | Integrated MLOps Workflow
+
+**Focus:** connect version control, data and feature management, experiment tracking, testing, CI, packaging and serving.
 
 ## Aim
-Combine source control, data tracking, pipeline execution, experiment tracking, tests, CI, containerization and serving.
 
-## Requirements
-- Python 3.10 or later
-- Git, DVC, Feast, MLflow, pytest, Flask, and Docker are installed only when running the corresponding experiment
-- Optional external tools as noted in the relevant experiments
+Review how the individual practicals fit together into an end-to-end ML delivery lifecycle and assess the evidence and boundaries of each demonstration.
+
+## Workflow map
+
+```mermaid
+flowchart LR
+    A[Git: source history] --> B[DVC: dataset versions]
+    B --> C[Pipeline: validated features]
+    C --> D[Feast: reusable features]
+    D --> E[MLflow: compare and register]
+    E --> F[Tests and GitHub Actions]
+    F --> G[Docker image]
+    G --> H[Flask prediction API]
+    H --> I[Monitor and improve]
+```
 
 ## Procedure
-1. Run Experiments 2–11 from their own folders to connect version control, data, features, training, testing, CI, packaging, and serving.
-2. Compare the recorded metrics and command results; identify which components use local demonstration infrastructure.
-3. Distinguish completed local integrations from unavailable infrastructure, such as a Docker daemon.
-4. Review the actual end-to-end summary in [`OUTPUT.txt`](./OUTPUT.txt).
 
+1. Run the practicals from folders `experiment-02` through `experiment-11`, following each folder's README.
+2. Review each practical's `OUTPUT.txt` as the evidence record for that demonstration.
+3. Compare the integrated summary in [`OUTPUT.txt`](./OUTPUT.txt) with the individual results.
+4. Distinguish local demonstrations from shared or production infrastructure; note any component not executed in the available environment.
 
 ## Integrated result
 
-The captured results show the successful local demonstrations and CI run, and explicitly identify infrastructure that was not available in the execution environment.
+The summary records the DVC data-version round trip, preprocessing counts, Feast retrieval, MLflow selection and registration, hyperparameter-search metrics, test results, CI evidence, and API responses.
 
-## Viva questions
-1. What problem does this tool or workflow solve?
-2. What is one limitation or failure mode?
-3. How can the result be reproduced?
+**Boundary:** most integrations use local files, SQLite or a local test client. Docker execution is explicitly unverified when Docker is unavailable. This report consolidates evidence from the individual practicals; it does not claim a single automated production deployment.
 
+## Conclusion
 
-## Concept summary
-The integrated workflow demonstrates how source, data, experiment, test, packaging, and serving stages can be connected while retaining traceability.
-
-## Outcome summary
-The integrated workflow summarizes the captured results from the individual practicals. A Docker image was not built when Docker was unavailable; the report does not claim an unverified container deployment.
-
-## Related files
-- Each preceding experiment has its own `README.md` and captured `OUTPUT.txt`.
+The practicals demonstrate how code, data, features, experiments, tests and serving can be connected and reviewed as a lifecycle. Reproducible local results are a foundation; shared production infrastructure and deployment require additional configuration.

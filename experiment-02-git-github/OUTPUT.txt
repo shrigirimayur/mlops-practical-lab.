@@ -1,26 +1,20 @@
-Experiment 2 — Git branching, merge, and conflict resolution
+Experiment 2 - Git branching, merge and conflict resolution
+Command: .\run_demo.ps1
 
-Git: 2.55.0.windows.3
-Execution: disposable local repository; the submitted repository was not used to create the conflict.
-
-Captured branch/commit sequence:
-main: 8963ada Add baseline
-feature/docs: 7e8deb9 Update on feature branch
-main: 8bfd5ba Update on main
-
-Captured merge result:
+Temporary repository: isolated from the assignment repository
+main: d28ca70 Add baseline
+feature/report: e3a38ad Update on feature branch
+main: a88630f Update on main
 Auto-merging notes.txt
 CONFLICT (content): Merge conflict in notes.txt
 Automatic merge failed; fix conflicts and then commit the result.
 merge exit code: 1
-
-After resolving the file and committing:
-*   c54e768 Resolve merge conflict
+After resolving the conflict:
+*   0500ef4 Resolve merge conflict
 |\
-| * 7e8deb9 Update on feature branch
-* | 8bfd5ba Update on main
+| * e3a38ad Update on feature branch
+* | a88630f Update on main
 |/
-* 8963ada Add baseline
-
-Final repository status: clean on main.
-The temporary repository was removed after the demonstration.
+* d28ca70 Add baseline
+Final repository status:
+clean on main

@@ -1,31 +1,45 @@
-# Experiment 7 — Baseline Model and Hyperparameter Search
+# Practical 07 | Baseline and Hyperparameter Search
+
+**Focus:** baseline evaluation, Grid Search, Random Search, held-out metrics and MLflow run comparison.
 
 ## Aim
-Compare baseline, Grid Search and Random Search using suitable validation and test metrics.
+
+Compare a default Logistic Regression baseline with tuned candidates on the Breast Cancer Wisconsin dataset, and log each run for repeatable comparison.
 
 ## Requirements
+
 - Python 3.10 or later
-- Install this folder's packages with `python -m pip install -r requirements.txt`
+- Install this practical's dependencies: `python -m pip install -r requirements.txt`
 
 ## Procedure
-1. Open PowerShell in this folder, install the packages, and run `python model_selection.py`.
-2. Compare cross-validation and held-out test metrics.
-3. Explain why tuning should not use the test set.
-4. Record best parameters and the chosen metric.
 
+From this folder:
 
-## Example commands and notes
+```powershell
+python -m pip install -r requirements.txt
+python model_selection.py
+```
+
+The script uses a stratified train/test split, evaluates the baseline with five-fold F1 cross-validation, checks all four `C` values with Grid Search, and samples two of those values with Random Search. It evaluates each selected estimator on the held-out test set and logs the baseline and both search results and model artifacts to MLflow.
+
+To compare runs in the MLflow UI:
+
+```powershell
+mlflow ui --backend-store-uri sqlite:///mlflow.db --host 127.0.0.1 --port 5000
+```
+
 ## Observed result
-Both searches selected `model__C=0.1`; the captured held-out test F1 was `0.9793` (accuracy `0.9737`). See [`OUTPUT.txt`](./OUTPUT.txt) for the full recorded run.
 
-## Viva questions
-1. What problem does this tool or workflow solve?
-2. What is one limitation or failure mode?
-3. How can the result be reproduced?
+| Run | CV F1 | Test accuracy | Test F1 |
+|---|---:|---:|---:|
+| Baseline Logistic Regression (`C=1.0`) | 0.9843 | 0.9825 | 0.9861 |
+| Grid Search (`C=0.1`) | 0.9845 | 0.9737 | 0.9793 |
+| Random Search (`C=0.1`) | 0.9845 | 0.9737 | 0.9793 |
 
+The three runs and their model artifacts were logged to MLflow. The console output lists the candidate settings evaluated by each search; captured run IDs and metrics are in [`OUTPUT.txt`](./OUTPUT.txt).
 
-## Concept summary
-Grid Search evaluates the specified combinations, while Random Search samples the search space. Test data is reserved for final evaluation.
+**Evaluation note:** the searches were selected using cross-validation. In this run, the baseline scored higher on the held-out test set than the CV-selected searches; that difference is reported rather than hidden. Test metrics were not used to choose hyperparameters.
 
-## Outcome summary
-The script compares both search methods on the same training split and uses a held-out test split only for final evaluation.
+## Conclusion
+
+Grid Search checks every specified setting while Random Search samples the search space. MLflow makes the baseline and tuned-run comparison inspectable instead of relying on console output alone.

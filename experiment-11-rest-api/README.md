@@ -1,44 +1,39 @@
-# Experiment 11 — REST API for Model Inference
+# Practical 11 | REST API for Model Inference
+
+**Focus:** Flask service, trained-model integration, prediction endpoint, request validation and response measurement.
 
 ## Aim
-Expose a trained demonstration model through a Flask REST API and test valid/invalid requests.
+
+Serve Iris model predictions through HTTP endpoints and verify health, a valid prediction request and an invalid request.
 
 ## Requirements
+
 - Python 3.10 or later
-- Install this folder's packages with `python -m pip install -r requirements.txt`
+- Install this practical's dependencies: `python -m pip install -r requirements.txt`
 
 ## Procedure
-1. Open PowerShell in this folder and install the packages.
-2. Start the app with `python app.py`.
-3. In a second terminal, test the health and prediction endpoints.
-4. Send an invalid feature count and confirm the API returns HTTP 400.
 
+From this folder:
 
-## Example commands and notes
 ```powershell
 python -m pip install -r requirements.txt
 python app.py
 ```
 
-Use Postman or cURL for requests in [`requests.md`](./requests.md). The example uses the Iris dataset and expects four numeric features.
+In a second terminal, send requests as shown in [`requests.md`](./requests.md):
 
+```powershell
+curl.exe http://127.0.0.1:8000/health
+curl.exe -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -d "{\"features\":[5.1,3.5,1.4,0.2]}"
+curl.exe -X POST http://127.0.0.1:8000/predict -H "Content-Type: application/json" -d "{\"features\":[1,2]}"
+```
 
 ## Observed result
-The Flask test client returned HTTP 200 for health and a valid Iris prediction, and HTTP 400 for an invalid feature count. The recorded responses and in-process latency are in [`OUTPUT.txt`](./OUTPUT.txt); the latency is not a network benchmark.
 
-## Viva questions
-1. What problem does this tool or workflow solve?
-2. What is one limitation or failure mode?
-3. How can the result be reproduced?
+The Flask test client returned HTTP `200` for health, HTTP `200` and class `setosa` for the valid prediction, and HTTP `400` for the invalid feature count. Captured response bodies are in [`OUTPUT.txt`](./OUTPUT.txt).
 
+The reported latency is from one in-process test-client request, not a network or load benchmark.
 
-## Concept summary
-The API validates request fields and returns a prediction response; a health endpoint supports basic service checks.
+## Conclusion
 
-## Outcome summary
-A Flask app trains its demonstration classifier when it starts. The test-client response time is not a network performance benchmark.
-
-## Related files
-- [`app.py`](./app.py) contains the Flask application and trained Iris classifier.
-- [`requests.md`](./requests.md) contains example health, prediction, and invalid-input requests.
-- [Experiment 10](../experiment-10-docker/README.md) packages this API in Docker.
+The API connects a trained classifier to a JSON prediction endpoint and rejects malformed input. A health route supports basic service checks.

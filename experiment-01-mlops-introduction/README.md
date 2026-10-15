@@ -1,43 +1,55 @@
-# Experiment 1 — Introduction to MLOps
+# Practical 01 | Introduction to MLOps
+
+**Focus:** MLOps lifecycle, DevOps comparison, production challenges, tools and workflow design.
 
 ## Aim
-Compare software development, DevOps and MLOps; explain lifecycle, components, production challenges and tool choices.
+
+Understand how machine-learning operations extend software development and DevOps to manage data, features, models and ongoing model performance.
+
+## Topics covered
+
+- **Software development:** builds and maintains application source code.
+- **DevOps:** automates software integration, release and service operations.
+- **MLOps:** applies these practices to code **and** data, features, models and their monitoring.
+- Lifecycle: problem definition → data collection and validation → preprocessing and features → training and evaluation → versioning and deployment → monitoring and retraining.
+- Production challenges: data or concept drift, training-serving skew, reproducibility, lineage, delayed labels and compute cost.
+- Example tools: Git (source), DVC (data), Feast (features), MLflow (experiments and models), pytest/GitHub Actions (testing and CI), Docker (packaging), Flask (serving).
+
+## Workflow
+
+```mermaid
+flowchart TD
+    A[Problem definition] --> B[Collect and validate data]
+    B --> C[Prepare data and features]
+    C --> D[Train and evaluate]
+    D --> E[Version and deploy]
+    E --> F[Monitor data, model and service]
+    F --> G{Quality or drift issue?}
+    G -- Yes --> H[Investigate, retrain or roll back]
+    H --> B
+    G -- No --> F
+```
+
+The source diagram is [`mlops-lifecycle.mmd`](./mlops-lifecycle.mmd).
+
+## Requirements
+
+- Python 3.10 or later; no third-party Python packages.
 
 ## Procedure
-1. Run `python workflow_demo.py` from this folder.
-2. Review the lifecycle diagram in [`mlops-lifecycle.mmd`](./mlops-lifecycle.mmd).
-3. Connect each lifecycle stage to the tools listed below.
 
-| Stage | Example tool | Purpose |
-|---|---|---|
-| Source versioning | Git | Track code changes |
-| Data versioning | DVC | Track datasets |
-| Experiment tracking | MLflow | Compare model runs |
-| Feature management | Feast | Reuse model features |
-| Testing and CI | pytest, GitHub Actions | Detect regressions |
-| Packaging and serving | Docker, Flask | Deploy predictions |
+From this folder:
 
-| Approach | Main artifact | Typical change | Operations focus |
-|---|---|---|---|
-| Software development | Source code | Feature or bug fix | Build and release software |
-| DevOps | Code and infrastructure | Application release | Automate integration, delivery, and service operations |
-| MLOps | Code, data, features, and model | Code, data, or model update | Reproducibility, deployment, monitoring, and retraining |
+```powershell
+python workflow_demo.py
+```
 
-Production ML systems can experience changing data distributions, training-serving skew, non-reproducible experiments, weak model/data lineage, delayed ground truth, and increased compute needs. MLOps tools solve different parts of these problems; no single tool covers the entire lifecycle.
-
-The lifecycle diagram connects problem definition, data preparation, training/evaluation, deployment, monitoring, and retraining.
+Review the lifecycle stages printed in the terminal and compare them with the diagram and tool map above.
 
 ## Observed result
-The lifecycle demonstration ran successfully. The captured terminal output is in [`OUTPUT.txt`](./OUTPUT.txt); the lifecycle diagram is a conceptual workflow reference.
 
-## Viva questions
-1. What problem does this tool or workflow solve?
-2. What is one limitation or failure mode?
-3. How can the result be reproduced?
+The script printed all six lifecycle stages. The captured run is in [`OUTPUT.txt`](./OUTPUT.txt). This is a conceptual walkthrough; it does not train or deploy a model.
 
+## Conclusion
 
-## Concept summary
-The lifecycle reference identifies data, code, feature, model, and monitoring responsibilities across the ML lifecycle.
-
-## Outcome summary
-The output lists six lifecycle stages. No third-party Python package is required.
+MLOps connects software delivery with data, feature, model and monitoring practices so that ML results can be reproduced, evaluated and operated.

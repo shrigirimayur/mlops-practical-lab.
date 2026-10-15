@@ -29,15 +29,20 @@ five-fold cross-validation R2 and registered the highest-scoring model.
   Registered model: mlops-practical-diabetes (version 1 in the clean local run)
   Alias: champion
 
-Experiment 7: Grid Search and Random Search both selected model__C=0.1.
-  Cross-validation F1: 0.9845
-  Test accuracy:      0.9737
-  Test F1:            0.9793
+Experiment 7: Baseline, Grid Search and Random Search runs and model
+artifacts were logged to MLflow. Grid Search checked all four C values;
+Random Search sampled two of those values.
+  Baseline CV F1:     0.9843
+  Baseline test F1:   0.9861
+  Grid Search C:      0.1 (CV F1 0.9845; test F1 0.9793)
+  Random Search C:   0.1 (CV F1 0.9845; test F1 0.9793)
+The baseline's held-out test score was higher in this run; the search was
+selected by cross-validation, not by the test result.
 
 Experiment 8: Local test suite passed: 7 passed.
-Experiment 9: Local standalone CI test suite passed: 7 passed. The assignment's
-GitHub Actions run #3 also passed on commit 89e5c48; see:
-https://github.com/shrigirimayur/mlops-practical-lab./actions/runs/38623857295
+Experiment 9: Local CI test suite passed: 7 passed. A root-level GitHub Actions
+workflow runs this suite on pushes and pull requests to main. Check the Actions
+tab for the hosted result associated with the current submission.
 
 Experiment 10: Docker CLI/Engine was unavailable in the execution environment.
 No image build or container run is claimed.

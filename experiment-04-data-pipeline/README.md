@@ -1,30 +1,43 @@
-# Experiment 4 — Data Collection and Processing Pipeline
+# Practical 04 | Data Preparation Pipeline
+
+**Focus:** data input, validation, preprocessing, feature preparation and repeatable pipeline execution.
 
 ## Aim
-Load, validate, preprocess, engineer features and execute a repeatable data pipeline.
+
+Build and run a small end-to-end pipeline that checks a dataset, separates features and target, splits training and test rows, fits preprocessing on training data and saves the processed test partition.
 
 ## Requirements
+
 - Python 3.10 or later
-- Install this folder's packages with `python -m pip install -r requirements.txt`
+- Install this practical's dependencies: `python -m pip install -r requirements.txt`
+
+## Pipeline stages
+
+| Stage | Demonstration |
+|---|---|
+| Data collection | Read the included `data/raw.csv` sample |
+| Validation | Check that input is non-empty and contains a target column |
+| Split | Keep a reproducible 80% training / 20% test split |
+| Preprocessing | Fit median imputation and standard scaling on training data; transform the test data |
+| Output | Save the processed test partition as `data/processed.csv` |
+
+The source dataset is a small classroom example, not a real-world student record.
 
 ## Procedure
-1. Open PowerShell in this folder.
-2. Install the listed packages and run `python pipeline.py`.
-3. Review `data/raw.csv` and the generated `data/processed.csv`.
 
+From this folder:
 
-## Example commands and notes
+```powershell
+python -m pip install -r requirements.txt
+python pipeline.py
+```
+
+Inspect `data/raw.csv` before running. The script recreates `data/processed.csv` on each run; the generated file is intentionally ignored by Git.
+
 ## Observed result
-The pipeline processed 10 sample rows into 8 training rows and 2 test rows, using 2 features. See [`OUTPUT.txt`](./OUTPUT.txt) for the captured command output.
 
-## Viva questions
-1. What problem does this tool or workflow solve?
-2. What is one limitation or failure mode?
-3. How can the result be reproduced?
+The captured run processed 10 rows into 8 training rows and 2 test rows, with 2 input features. See [`OUTPUT.txt`](./OUTPUT.txt).
 
+## Conclusion
 
-## Concept summary
-The demonstration script validates input, splits rows, fits preprocessing on training data, and writes a processed test partition.
-
-## Outcome summary
-The script creates sample input data when needed, validates it, fits preprocessing on training data only, and writes the processed test partition.
+Fitting preprocessing only on the training split avoids leaking test-set statistics into training. A single command executes the pipeline stages consistently.

@@ -1,12 +1,27 @@
-Experiment 7 - Grid and Random Search
+Experiment 7 - Baseline, Grid Search, Random Search and MLflow
 Command: python model_selection.py
+
+Baseline Logistic Regression
+Run ID: b3b41cd1a0684253a0f20e8a9879e4ae
+CV F1: 0.9843
+Test accuracy: 0.9825
+Test F1: 0.9861
+
 Grid Search
+Run ID: b198c2454ddd4db7883155c65225745d
+Tested parameters: [{'model__C': 0.01}, {'model__C': 0.1}, {'model__C': 1.0}, {'model__C': 10.0}]
 Best parameters: {'model__C': 0.1}
-Best CV F1: 0.9845
+CV F1: 0.9845
 Test accuracy: 0.9737
 Test F1: 0.9793
+
 Random Search
+Run ID: 803906a2f95d4e948125954114ce9aa1
+Tested parameters: [{'model__C': 0.1}, {'model__C': 10.0}]
 Best parameters: {'model__C': 0.1}
-Best CV F1: 0.9845
+CV F1: 0.9845
 Test accuracy: 0.9737
 Test F1: 0.9793
+
+MLflow tracking database: mlflow.db (local to this experiment folder)
+All three runs are available in the 'breast-cancer-model-search' experiment.

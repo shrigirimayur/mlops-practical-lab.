@@ -1,12 +1,15 @@
-2026/10/15 01:24:04 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
-2026/10/15 01:24:04 INFO mlflow.store.db.utils: Updating database tables
-2026/10/15 01:24:06 INFO mlflow.tracking.fluent: Experiment with name 'mlops-practical' does not exist. Creating a new experiment.
+Experiment 6 - MLflow model tracking
+Command: python train.py
+
+2026/10/15 22:11:35 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/10/15 22:11:35 INFO mlflow.store.db.utils: Updating database tables
+2026/10/15 22:11:36 INFO mlflow.tracking.fluent: Experiment with name 'mlops-practical' does not exist. Creating a new experiment.
 Successfully registered model 'mlops-practical-diabetes'.
 Created version '1' of model 'mlops-practical-diabetes'.
 Candidate runs:
-  run=baae319163ec4dd18e8836fb1692386f n_estimators=50 max_depth=4 CV R2=0.4037 test R2=0.4549
-  run=e9069dea3df94eb6a6c4eebb80234614 n_estimators=100 max_depth=6 CV R2=0.3970 test R2=0.4566
-Selected run: baae319163ec4dd18e8836fb1692386f
+  run=d2122cd6f79a495fb6d29d156c9ab0bd n_estimators=50 max_depth=4 CV R2=0.4037 test R2=0.4549
+  run=ba6a29d369f74665a49391c3dcf1aad8 n_estimators=100 max_depth=6 CV R2=0.3970 test R2=0.4566
+Selected run: d2122cd6f79a495fb6d29d156c9ab0bd
 Selection metric (5-fold CV R2): 0.4037
 Selected parameters: n_estimators=50, max_depth=4
 Selected test metrics: {'mae': 43.97478240201259, 'mse': 2887.856262479512, 'r2': 0.45493137993111155, 'cv_r2': 0.4036649157922487}

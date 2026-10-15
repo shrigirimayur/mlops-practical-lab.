@@ -1,28 +1,34 @@
-# Experiment 9 — Continuous Integration with GitHub Actions
+# Practical 09 | Continuous Integration with GitHub Actions
+
+**Focus:** automated dependency installation, test execution and CI result reporting.
 
 ## Aim
 
-Automate dependency installation and the Experiment 8 test suite when changes are pushed or a pull request targets `main`.
+Run the Experiment 9 test suite automatically when code is pushed or a pull request targets `main`.
 
-## Workflow
+## Requirements
 
-The workflow file, dependencies, and validation test suite are included in this folder. GitHub Actions only discovers workflow files under `.github/workflows` at the root of a GitHub repository. To run this practical as its own GitHub repository, place the contents of this folder at the repository root and copy `ci.yml` to `.github/workflows/ci.yml`. Then the workflow installs `requirements.txt` and runs the included tests:
+- A GitHub repository with GitHub Actions enabled.
+- The dependencies listed in this practical's `requirements.txt`.
 
-```bash
+## Procedure
+
+1. Review the repository workflow at [`../.github/workflows/ci.yml`](../.github/workflows/ci.yml).
+2. Push a change to `main` or open a pull request targeting `main`.
+3. In GitHub, open **Actions** and inspect the `MLOps Practical CI` run.
+4. The workflow installs this folder's dependencies and runs this folder's pytest suite.
+
+To reproduce the CI commands locally, from this folder run:
+
+```powershell
 python -m pip install -r requirements.txt
 python -m pytest -v
 ```
 
-## Captured result
+## Observed result
 
-[`OUTPUT.txt`](./OUTPUT.txt) records the local seven-test run and a prior successful GitHub Actions run. The workflow source stays in this experiment folder so the practical is self-contained; GitHub does not auto-run this nested workflow in the assignment repository.
+The recorded local run passed **7 tests**; see [`OUTPUT.txt`](./OUTPUT.txt). The workflow is now located at the repository root, where GitHub discovers workflow files. A green local run is not evidence of a successful GitHub-hosted run; check the Actions page for the run associated with the submitted commit.
 
-## Result
+## Conclusion
 
-GitHub Actions installs the specified dependencies and runs the included tests on pushes and pull requests. Passing CI verifies the configured tests in the runner environment; it does not prove model quality or Docker deployment.
-
-## Viva questions
-
-1. What events trigger this workflow?
-2. Why should the same test command run locally and in CI?
-3. What does a green CI job establish—and what does it not establish?
+CI repeats the test command in a clean runner and provides a visible pass/fail result for repository changes. It verifies the configured tests, not model quality or Docker deployment.
